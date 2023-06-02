@@ -97,33 +97,28 @@ class ContentViewViewModel: ObservableObject {
 struct ContentView: View {
     @StateObject private var viewModel = ContentViewViewModel()
     @State private var isShowingMnemonicAlert = false
-    @State private var isShowingAlreadyInitializedAlert = false
     @State private var balance: Double = 0.0
     
     var body: some View {
         VStack {
             Button(action: {
                 viewModel.runCommand1()
-                if viewModel.mnemonic != nil && viewModel.address != nil {
-                    isShowingMnemonicAlert = true
-                } else {
-                    isShowingAlreadyInitializedAlert = true
-                }
+                isShowingMnemonicAlert = true
             }) {
                 Text("Initialize your Celestia light node")
-            }.disabled(viewModel.isRunningNode)
-
+            }
+            
             Button(action: {
                 viewModel.runCommand2()
             }) {
                 Text("Start your node")
-            }.disabled(viewModel.isRunningNode)
-
+            }
+            
             Button(action: {
                 viewModel.stopCommand()
             }) {
                 Text("Stop your node")
-            }.disabled(!viewModel.isRunningNode)
+            }
             
             Spacer()
                 .frame(height: 20) // Add space here
@@ -147,13 +142,6 @@ struct ContentView: View {
             Alert(
                 title: Text("Initialization Complete"),
                 message: Text("MNEMONIC (save this somewhere safe!!!): \(viewModel.mnemonic ?? "")\n\nADDRESS: \(viewModel.address ?? "")"),
-                dismissButton: .default(Text("OK"))
-            )
-        }
-        .alert(isPresented: $isShowingAlreadyInitializedAlert) {
-            Alert(
-                title: Text("Initialization Failed"),
-                message: Text("Your node is already initialized"),
                 dismissButton: .default(Text("OK"))
             )
         }
