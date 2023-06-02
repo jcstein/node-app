@@ -11,8 +11,17 @@ class ContentViewViewModel: ObservableObject {
     @Published var isRunningNode = false
     @Published var mnemonic: String?
     @Published var address: String?
-    
+
     private var process: Process?
+
+    enum AlertType: Int, Identifiable {
+        case mnemonicAlert
+        case alreadyInitializedAlert
+
+        var id: Int { rawValue }
+    }
+    
+    @Published var alertType: AlertType? = nil
     
     func runCommand1() {
         let command = "cd \(Bundle.main.resourcePath!); ./celestia light init --p2p.network arabica"
@@ -32,8 +41,15 @@ class ContentViewViewModel: ObservableObject {
             print("Output: \(output)")
             
             if let mnemonic = extractMnemonic(from: output), let address = extractAddress(from: output) {
-                self.mnemonic = mnemonic
-                self.address = address
+                DispatchQueue.main.async {
+                    self.mnemonic = mnemonic
+                    self.address = address
+                    self.alertType = .mnemonicAlert
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self.alertType = .alreadyInitializedAlert
+                }
             }
         }
         
@@ -96,29 +112,27 @@ class ContentViewViewModel: ObservableObject {
 
 struct ContentView: View {
     @StateObject private var viewModel = ContentViewViewModel()
-    @State private var isShowingMnemonicAlert = false
     @State private var balance: Double = 0.0
     
     var body: some View {
         VStack {
             Button(action: {
                 viewModel.runCommand1()
-                isShowingMnemonicAlert = true
             }) {
                 Text("Initialize your Celestia light node")
-            }
-            
+            }.disabled(viewModel.isRunningNode)
+
             Button(action: {
                 viewModel.runCommand2()
             }) {
                 Text("Start your node")
-            }
-            
+            }.disabled(viewModel.isRunningNode)
+
             Button(action: {
                 viewModel.stopCommand()
             }) {
                 Text("Stop your node")
-            }
+            }.disabled(!viewModel.isRunningNode)
             
             Spacer()
                 .frame(height: 20) // Add space here
@@ -138,12 +152,21 @@ struct ContentView: View {
             }
         }
         .padding(.vertical, 10)
-        .alert(isPresented: $isShowingMnemonicAlert) {
-            Alert(
-                title: Text("Initialization Complete"),
-                message: Text("MNEMONIC (save this somewhere safe!!!): \(viewModel.mnemonic ?? "")\n\nADDRESS: \(viewModel.address ?? "")"),
-                dismissButton: .default(Text("OK"))
-            )
+        .alert(item: $viewModel.alertType) { alertType in
+            switch alertType {
+            case .mnemonicAlert:
+                return Alert(
+                    title: Text("Initialization Complete"),
+                    message: Text("MNEMONIC (save this somewhere safe!!!): \(viewModel.mnemonic ?? "")\n\nADDRESS: \(viewModel.address ?? "")"),
+                    dismissButton: .default(Text("OK"))
+                )
+            case .alreadyInitializedAlert:
+                return Alert(
+                    title: Text("Initialization Failed"),
+                    message: Text("Your node is already initialized"),
+                    dismissButton: .default(Text("OK"))
+                )
+            }
         }
     }
     
