@@ -96,8 +96,8 @@ class ContentViewViewModel: ObservableObject {
 
 struct ContentView: View {
     @StateObject private var viewModel = ContentViewViewModel()
-    @State private var balance: String = ""
     @State private var isShowingMnemonicAlert = false
+    @State private var balance: Double = 0.0
     
     var body: some View {
         VStack {
@@ -133,7 +133,7 @@ struct ContentView: View {
                     Text("Check your balance")
                 }
                 
-                Text(balance)
+                Text("\(balance, specifier: "%.6f") TIA")
                     .padding()
             }
         }
@@ -148,7 +148,7 @@ struct ContentView: View {
     }
     
     func checkBalance() {
-        let command = "curl -X GET http://localhost:26659/balance"
+        let command = "curl -s -X GET http://localhost:26659/balance"
         
         let task = Process()
         task.launchPath = "/usr/bin/env"
@@ -161,8 +161,16 @@ struct ContentView: View {
         task.terminationHandler = { process in
             let data = pipe.fileHandleForReading.readDataToEndOfFile()
             if let output = String(data: data, encoding: .utf8) {
-                DispatchQueue.main.async {
-                    balance = output
+                do {
+                    if let dict = try JSONSerialization.jsonObject(with: Data(output.utf8), options: []) as? [String: Any],
+                       let amountStr = dict["amount"] as? String,
+                       let amountDouble = Double(amountStr) {
+                        DispatchQueue.main.async {
+                            self.balance = amountDouble * pow(10, -6)
+                        }
+                    }
+                } catch let error {
+                    print("Failed to parse JSON: \(error)")
                 }
             }
         }
