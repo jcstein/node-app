@@ -105,32 +105,32 @@ struct ContentView: View {
                 viewModel.runCommand1()
                 isShowingMnemonicAlert = true
             }) {
-                Text("Initialize a Celestia light node")
+                Text("Initialize your Celestia light node")
             }
             
             Button(action: {
                 viewModel.runCommand2()
             }) {
-                Text("Start the node")
+                Text("Start your node")
             }
             
             Button(action: {
                 viewModel.stopCommand()
             }) {
-                Text("Stop the node")
+                Text("Stop your node")
             }
             
             Spacer()
                 .frame(height: 20) // Add space here
             
             if viewModel.isRunningNode {
-                ProgressView("Node is running...")
+                ProgressView("Your light node is running...")
                     .padding()
                 
                 Button(action: {
                     checkBalance()
                 }) {
-                    Text("Check Your Balance")
+                    Text("Check your balance")
                 }
                 
                 Text(balance)
