@@ -14,9 +14,7 @@
 		48BC07FB2A29727200577849 /* node_appTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BC07FA2A29727200577849 /* node_appTests.swift */; };
 		48BC08052A29727200577849 /* node_appUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BC08042A29727200577849 /* node_appUITests.swift */; };
 		48BC08072A29727200577849 /* node_appUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BC08062A29727200577849 /* node_appUITestsLaunchTests.swift */; };
-		48BC08142A2974C600577849 /* celestia in Resources */ = {isa = PBXBuildFile; fileRef = 48BC08132A2974C600577849 /* celestia */; };
-		48BC08152A2974C600577849 /* celestia in Resources */ = {isa = PBXBuildFile; fileRef = 48BC08132A2974C600577849 /* celestia */; };
-		48BC08162A2974C600577849 /* celestia in Resources */ = {isa = PBXBuildFile; fileRef = 48BC08132A2974C600577849 /* celestia */; };
+		48E752C22A2AC56B00916E32 /* celestia in Resources */ = {isa = PBXBuildFile; fileRef = 48E752C12A2AC56B00916E32 /* celestia */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,7 +46,7 @@
 		48BC08002A29727200577849 /* node-appUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "node-appUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		48BC08042A29727200577849 /* node_appUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = node_appUITests.swift; sourceTree = "<group>"; };
 		48BC08062A29727200577849 /* node_appUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = node_appUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		48BC08132A2974C600577849 /* celestia */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = celestia; sourceTree = "<group>"; };
+		48E752C12A2AC56B00916E32 /* celestia */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = celestia; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,7 +77,7 @@
 		48BC07DC2A29727100577849 = {
 			isa = PBXGroup;
 			children = (
-				48BC08132A2974C600577849 /* celestia */,
+				48E752C12A2AC56B00916E32 /* celestia */,
 				48BC07E72A29727100577849 /* node-app */,
 				48BC07F92A29727200577849 /* node-appTests */,
 				48BC08032A29727200577849 /* node-appUITests */,
@@ -240,7 +238,7 @@
 			files = (
 				48BC07F02A29727200577849 /* Preview Assets.xcassets in Resources */,
 				48BC07ED2A29727200577849 /* Assets.xcassets in Resources */,
-				48BC08142A2974C600577849 /* celestia in Resources */,
+				48E752C22A2AC56B00916E32 /* celestia in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,7 +246,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				48BC08152A2974C600577849 /* celestia in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,7 +253,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				48BC08162A2974C600577849 /* celestia in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -440,7 +436,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = v0.1.1;
+				MARKETING_VERSION = v0.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "gm.node-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -470,7 +466,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = v0.1.1;
+				MARKETING_VERSION = v0.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "gm.node-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

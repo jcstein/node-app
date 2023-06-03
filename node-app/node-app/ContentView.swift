@@ -79,7 +79,7 @@ class ContentViewViewModel: ObservableObject {
     }
     
     func runCommand2() {
-        let command = "cd \(Bundle.main.resourcePath!); ./celestia light start --core.ip https://consensus-full-arabica-8.celestia-arabica.com/ --gateway --gateway.addr 127.0.0.1 --gateway.port 26659 --p2p.network arabica"
+        let command = "cd \(Bundle.main.resourcePath!); ./celestia light start --core.ip consensus-full-arabica-8.celestia-arabica.com --gateway --gateway.addr 127.0.0.1 --gateway.port 26659 --p2p.network arabica"
         
         let task = Process()
         task.launchPath = "/usr/bin/env"
