@@ -163,58 +163,76 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            Button(action: {
-                viewModel.initializeNode()
-            }) {
-                Text("Initialize your Celestia light node")
-            }.disabled(viewModel.isRunningNode)
-
-            Button(action: {
-                viewModel.startNode()
-            }) {
-                Text("Start your node")
-            }.disabled(viewModel.isRunningNode)
-
-            Button(action: {
-                viewModel.stopCommand()
-            }) {
-                Text("Stop your node")
-            }.disabled(!viewModel.isRunningNode)
-            
-            Spacer()
-                .frame(height: 20)
-            
-            if viewModel.isRunningNode {
-                ProgressView("Your light node is running...")
-                    .padding()
-
-                GroupBox {
-                    Button(action: {
-                        checkBalance()
-                    }) {
-                        Text("Check your balance")
+            Text("Celestia Node Control Panel")
+                            .font(.largeTitle)
+                            .padding()
+            HStack {
+                VStack {
+                    GroupBox {
+                        Button(action: {
+                            viewModel.initializeNode()
+                        }) {
+                            Text("🟣 Initialize your Celestia light node")
+                        }.disabled(viewModel.isRunningNode)
+                        
+                        Button(action: {
+                            viewModel.startNode()
+                        }) {
+                            Text("🟢 Start your node")
+                        }.disabled(viewModel.isRunningNode)
                     }
-                    
-                    Text("\(balance, specifier: "%.6f") TIA")
                 }
+                .padding()
+                .frame(maxWidth: .infinity)
+                .border(Color.gray, width: 300)
                 
-                Text("Chain height: \(viewModel.chainHeight ?? "fetching...")")
-                    .padding()
+                VStack {
+                    if viewModel.isRunningNode {
+                        ProgressView("🟢 Your light node is running...")
+                            .padding()
+                    }
+                    Button(action: {
+                        viewModel.stopCommand()
+                    }) {
+                        Text("🔴 Stop your node")
+                    }.disabled(!viewModel.isRunningNode)
+                }
+                .padding()
+                .frame(maxWidth: .infinity)
+                .border(Color.gray, width: 300)
+            }
+            .padding(.vertical, 10)
+            HStack {
+                if viewModel.isRunningNode {
+                    VStack {
+                        GroupBox {
+                            Button(action: {
+                                checkBalance()
+                            }) {
+                                Text("🪙 Check your balance")
+                            }
+                            
+                            Text("\(balance, specifier: "%.6f") TIA")
+                        }
+                        
+                        Text("⛓️ Chain height: \(viewModel.chainHeight ?? "🔄 fetching... ")")
+                            .padding()
+                    }
+                }
             }
         }
-        .padding(.vertical, 10)
         .alert(item: $viewModel.alertType) { alertType in
             switch alertType {
             case .mnemonicAlert:
                 return Alert(
-                    title: Text("Initialization Complete"),
+                    title: Text("✅ Initialization Complete"),
                     message: Text("MNEMONIC (save this somewhere safe!!!): \(viewModel.mnemonic ?? "")\n\nADDRESS: \(viewModel.address ?? "")"),
                     dismissButton: .default(Text("OK"))
                 )
             case .alreadyInitializedAlert:
                 return Alert(
-                    title: Text("Initialization Failed"),
-                    message: Text("Your node is already initialized"),
+                    title: Text("✅ Initialization Complete"),
+                    message: Text("Your node is already initialized 👍"),
                     dismissButton: .default(Text("OK"))
                 )
             }
