@@ -13,7 +13,17 @@ images for Mac can be found on the
 Download the `.dmg` to your computer, and open it from the downloads folder.
 Then, drag the "node-app" icon to the "Applications" folder.
 
-<img width="912" alt="Screenshot 2023-06-03 at 5 56 09 PM" src="https://github.com/jcstein/node-app/assets/46639943/7e3b92c3-2dbb-43fb-86cb-2030f99f3b7d">
+<img width="912" alt="Screenshot 2023-06-03 at 6 19 52 PM" src="https://github.com/jcstein/node-app/assets/46639943/02727e42-8f85-4014-a21a-e5543fd0cce3">
+
+## App previews
+
+### Before starting a node
+
+<img width="912" alt="Screenshot 2023-06-03 at 5 19 25 PM" src="https://github.com/jcstein/node-app/assets/46639943/fccc280b-7d79-427f-9d0a-1a2dc255b887">
+
+### A running node
+
+<img width="912" alt="Screenshot 2023-06-03 at 5 19 23 PM" src="https://github.com/jcstein/node-app/assets/46639943/0135adbc-9136-47ec-b9d7-b6eaaa1b7aa9">
 
 ## Features
 
@@ -43,13 +53,3 @@ The current version requires:
 ### Developer dependencies
 
 * Xcode
-
-## App previews
-
-### Before starting a node
-
-<img width="912" alt="Screenshot 2023-06-03 at 5 19 25 PM" src="https://github.com/jcstein/node-app/assets/46639943/fccc280b-7d79-427f-9d0a-1a2dc255b887">
-
-### A running node
-
-<img width="912" alt="Screenshot 2023-06-03 at 5 19 23 PM" src="https://github.com/jcstein/node-app/assets/46639943/0135adbc-9136-47ec-b9d7-b6eaaa1b7aa9">
