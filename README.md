@@ -32,7 +32,7 @@ The current version requires:
 * macOS 13.1 or higher
 * Macs equipped with M1 or M2 chips (as the `celestia` binary is built specifically for ARM Macs in the alpha versions)
 
-## Dependencies
+## Application dependencies
 
 * `celestia-node` ("CN") binary version: [v0.11.0-rc2](https://github.com/celestiaorg/celestia-node/releases/tag/v0.11.0-rc2)
 
