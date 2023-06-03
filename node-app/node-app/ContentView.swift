@@ -163,7 +163,7 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            Text("Celestia Node Control Panel")
+            Text("Light node control panel")
                             .font(.largeTitle)
                             .padding()
             HStack {
