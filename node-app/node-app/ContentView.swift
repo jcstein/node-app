@@ -198,7 +198,7 @@ struct ContentView: View {
                     Text("\(balance, specifier: "%.6f") TIA")
                 }
                 
-                Text("Chain height: \(viewModel.chainHeight ?? "0")")
+                Text("Chain height: \(viewModel.chainHeight ?? "fetching...")")
                     .padding()
             }
         }
