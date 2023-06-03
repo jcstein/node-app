@@ -11,8 +11,10 @@ class ContentViewViewModel: ObservableObject {
     @Published var isRunningNode = false
     @Published var mnemonic: String?
     @Published var address: String?
+    @Published var chainHeight: String?
 
     private var process: Process?
+    private var timer: Timer?
 
     enum AlertType: Int, Identifiable {
         case mnemonicAlert
@@ -102,11 +104,56 @@ class ContentViewViewModel: ObservableObject {
         
         isRunningNode = true
         process = task
+
+        timer = Timer.scheduledTimer(withTimeInterval: 10.0, repeats: true) { [weak self] _ in
+            self?.checkChainHeight()
+        }
     }
     
     func stopCommand() {
         process?.terminate()
         isRunningNode = false
+        timer?.invalidate()
+        timer = nil
+    }
+
+    func checkChainHeight() {
+        let command = "curl -s -X GET http://localhost:26659/head"
+        
+        let task = Process()
+        task.launchPath = "/usr/bin/env"
+        task.arguments = ["bash", "-c", command]
+        
+        let pipe = Pipe()
+        task.standardOutput = pipe
+        task.standardError = pipe
+        
+        task.terminationHandler = { process in
+            let data = pipe.fileHandleForReading.readDataToEndOfFile()
+            if data.isEmpty {
+                print("No data received from API")
+                return
+            }
+
+            if let output = String(data: data, encoding: .utf8) {
+                do {
+                    if let dict = try JSONSerialization.jsonObject(with: Data(output.utf8), options: []) as? [String: Any],
+                       let headerDict = dict["header"] as? [String: Any],
+                       let height = headerDict["height"] as? String {
+                        DispatchQueue.main.async {
+                            self.chainHeight = height
+                        }
+                    }
+                } catch let error {
+                    print("Failed to parse JSON: \(error)")
+                }
+            }
+        }
+        
+        DispatchQueue.global().async {
+            task.launch()
+            task.waitUntilExit()
+        }
     }
 }
 
@@ -148,6 +195,8 @@ struct ContentView: View {
                 }
                 
                 Text("\(balance, specifier: "%.6f") TIA")
+                    .padding()
+                Text("Chain height: \(viewModel.chainHeight ?? "0")")
                     .padding()
             }
         }
