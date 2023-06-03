@@ -187,15 +187,17 @@ struct ContentView: View {
             if viewModel.isRunningNode {
                 ProgressView("Your light node is running...")
                     .padding()
-                
-                Button(action: {
-                    checkBalance()
-                }) {
-                    Text("Check your balance")
+
+                GroupBox {
+                    Button(action: {
+                        checkBalance()
+                    }) {
+                        Text("Check your balance")
+                    }
+                    
+                    Text("\(balance, specifier: "%.6f") TIA")
                 }
                 
-                Text("\(balance, specifier: "%.6f") TIA")
-                    .padding()
                 Text("Chain height: \(viewModel.chainHeight ?? "0")")
                     .padding()
             }
