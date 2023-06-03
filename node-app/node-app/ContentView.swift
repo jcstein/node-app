@@ -25,7 +25,7 @@ class ContentViewViewModel: ObservableObject {
     
     @Published var alertType: AlertType? = nil
     
-    func runCommand1() {
+    func initializeNode() {
         let command = "cd \(Bundle.main.resourcePath!); ./celestia light init --p2p.network arabica"
         
         let task = Process()
@@ -80,7 +80,7 @@ class ContentViewViewModel: ObservableObject {
         return nil
     }
     
-    func runCommand2() {
+    func startNode() {
         let command = "cd \(Bundle.main.resourcePath!); ./celestia light start --core.ip consensus-full-arabica-8.celestia-arabica.com --gateway --gateway.addr 127.0.0.1 --gateway.port 26659 --p2p.network arabica"
         
         let task = Process()
@@ -105,7 +105,7 @@ class ContentViewViewModel: ObservableObject {
         isRunningNode = true
         process = task
 
-        timer = Timer.scheduledTimer(withTimeInterval: 10.0, repeats: true) { [weak self] _ in
+        timer = Timer.scheduledTimer(withTimeInterval: 3.0, repeats: true) { [weak self] _ in
             self?.checkChainHeight()
         }
     }
@@ -164,13 +164,13 @@ struct ContentView: View {
     var body: some View {
         VStack {
             Button(action: {
-                viewModel.runCommand1()
+                viewModel.initializeNode()
             }) {
                 Text("Initialize your Celestia light node")
             }.disabled(viewModel.isRunningNode)
 
             Button(action: {
-                viewModel.runCommand2()
+                viewModel.startNode()
             }) {
                 Text("Start your node")
             }.disabled(viewModel.isRunningNode)
@@ -182,7 +182,7 @@ struct ContentView: View {
             }.disabled(!viewModel.isRunningNode)
             
             Spacer()
-                .frame(height: 20) // Add space here
+                .frame(height: 20)
             
             if viewModel.isRunningNode {
                 ProgressView("Your light node is running...")
