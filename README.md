@@ -6,8 +6,9 @@ This repository is for the Celestia light node macOS app, written in Swift.
 
 ### macOS download
 
-Latest releases with `.dmg` images for Mac can be found on the
-[Releases](https://github.com/jcstein/node-app/releases) page.
+The latest release with `Celestia_light_node_Installer-v0.1.4-alpha.dmg`
+images for Mac can be found on the
+[latest release](https://github.com/jcstein/node-app/releases/latest) page.
 
 Download the `.dmg` to your computer, and open it from the downloads folder.
 Then, drag the "node-app" icon to the "Applications" folder.
@@ -16,7 +17,7 @@ Then, drag the "node-app" icon to the "Applications" folder.
 
 ## Features
 
-v0.1.3-alpha of this app runs on the [Arabica devnet](https://docs.celestia.org/nodes/arabica-devnet/) and has the following functions:
+v0.1.4-alpha of this app runs on the [Arabica devnet](https://docs.celestia.org/nodes/arabica-devnet/) and has the following functions:
 
 * `Initialize your Celestia light node`: this initializes a Celestia light node in the application's local storage
 * `Start your node`: this starts the light node
