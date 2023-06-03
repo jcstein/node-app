@@ -15,6 +15,8 @@ class ContentViewViewModel: ObservableObject {
 
     private var process: Process?
     private var timer: Timer?
+    private var processId: Int32?
+    private var terminationAttempted = false
 
     enum AlertType: Int, Identifiable {
         case mnemonicAlert
@@ -99,6 +101,7 @@ class ContentViewViewModel: ObservableObject {
         
         DispatchQueue.global().async {
             task.launch()
+            self.processId = task.processIdentifier
             task.waitUntilExit()
         }
         
@@ -112,9 +115,61 @@ class ContentViewViewModel: ObservableObject {
     
     func stopCommand() {
         process?.terminate()
-        isRunningNode = false
-        timer?.invalidate()
-        timer = nil
+        terminationAttempted = true
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.checkIfProcessIsRunning()
+        }
+    }
+
+    func checkIfProcessIsRunning() {
+        guard let processId = processId else { return }
+        
+        let task = Process()
+        task.launchPath = "/usr/bin/env"
+        task.arguments = ["bash", "-c", "ps -p \(processId)"]
+
+        let pipe = Pipe()
+        task.standardOutput = pipe
+        task.standardError = pipe
+
+        DispatchQueue.global().async {
+            task.launch()
+            task.waitUntilExit()
+            
+            let data = pipe.fileHandleForReading.readDataToEndOfFile()
+            let output = String(data: data, encoding: .utf8)
+
+            DispatchQueue.main.async {
+                // Check if the process is still running
+                if output?.contains("\(processId)") == true {
+                    // If we've already attempted termination, kill the process forcefully
+                    if self.terminationAttempted {
+                        self.killProcess()
+                    } else {
+                        // If not, try terminating again
+                        self.stopCommand()
+                    }
+                } else {
+                    self.isRunningNode = false
+                    self.timer?.invalidate()
+                    self.timer = nil
+                }
+            }
+        }
+    }
+
+    func killProcess() {
+        guard let processId = processId else { return }
+        
+        let task = Process()
+        task.launchPath = "/usr/bin/env"
+        task.arguments = ["bash", "-c", "kill -9 \(processId)"]
+
+        DispatchQueue.global().async {
+            task.launch()
+            task.waitUntilExit()
+        }
     }
 
     func checkChainHeight() {
