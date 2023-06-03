@@ -12,6 +12,8 @@ Latest releases with `.dmg` images for Mac can be found on the
 Download the `.dmg` to your computer, and open it from the downloads folder.
 Then, drag the "node-app" icon to the "Applications" folder.
 
+<img width="912" alt="Screenshot 2023-06-03 at 5 36 32 PM" src="https://github.com/jcstein/node-app/assets/46639943/f6241f1f-905a-4096-b24d-f4d8e8375cad">
+
 ## Features
 
 v0.1.3-alpha of this app runs on the [Arabica devnet](https://docs.celestia.org/nodes/arabica-devnet/) and has the following functions:
