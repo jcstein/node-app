@@ -13,7 +13,7 @@ images for Mac can be found on the
 Download `quasar.dmg` to your computer and open it from your downloads folder.
 Then, drag the "quasar" icon to the "Applications" folder.
 
-<img width="912" alt="Screenshot 2023-06-03 at 11 03 10 PM" src="https://github.com/jcstein/node-app/assets/46639943/01a7ccc4-d717-401b-8ebb-1ad2813d129e">
+<img width="912" alt="Screenshot 2023-06-04 at 1 59 25 AM" src="https://github.com/jcstein/node-app/assets/46639943/9b91f374-e459-4d59-9b02-acf1e07ebac9">
 
 #### Troubleshooting 🛠️
 
@@ -27,15 +27,16 @@ Click "Open Anyway" next in the box that says `"quasar" was blocked from use bec
 
 ### Before starting a node 🎬
 
-<img width="912" alt="Screenshot 2023-06-03 at 10 39 38 PM" src="https://github.com/jcstein/node-app/assets/46639943/5327a02d-b592-4d20-92ce-938393d9a765">
+<img width="912" alt="Screenshot 2023-06-04 at 2 01 36 AM" src="https://github.com/jcstein/node-app/assets/46639943/1fd32756-d9e5-4baa-b4ed-7837b0c4783b">
 
 ### Initializing a node 🟣
 
-<img width="912" alt="Screenshot 2023-06-03 at 11 09 24 PM" src="https://github.com/jcstein/node-app/assets/46639943/e70b4e2b-8271-4308-a103-8745f37ecc40">
+<img width="912" alt="Screenshot 2023-06-04 at 2 01 40 AM" src="https://github.com/jcstein/node-app/assets/46639943/5e815f72-c922-47b2-859e-da6294ce4369">
 
 ### Running a node 🟢
 
-<img width="912" alt="Screenshot 2023-06-03 at 10 41 25 PM" src="https://github.com/jcstein/node-app/assets/46639943/5384f05e-6b19-4aa7-bf39-2a825e4b4cf2">
+<img width="912" alt="Screenshot 2023-06-04 at 2 01 49 AM" src="https://github.com/jcstein/node-app/assets/46639943/2f71a135-59bf-417a-a544-c46a83b6d275">
+
 
 ## Features ⚙️
 
