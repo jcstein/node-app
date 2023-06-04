@@ -16,8 +16,8 @@ v0.1.6 of this app runs on the [Arabica devnet](https://docs.celestia.org/nodes/
 * `🪙 Check your balance`: this now displays a balance in TIA to 6 decimal places
 * `⛓️ Chain height`: fetches the chain height every 0.2s
 * `🗑️ Delete your data store`: deletes the data store for the node (use with caution)
-* `🔐 Delete your key store`: deletes the key store for the node, the accoutn `my_celes_key` (use with caution)
-* `🔥 Delete entire node store`: deletes both the data and key store ((use with caution)
+* `🔐 Delete your key store`: deletes the key store for the node, the account `my_celes_key` (use with caution)
+* `🔥 Delete entire node store`: deletes both the data and key store (use with caution)
 
 ## Installation 🏗️
 
@@ -35,7 +35,8 @@ Then, drag the "quasar" icon to the "Applications" folder.
 ### Troubleshooting 🛠️
 
 If you encounter a warning when you open the app, you will need to go to your
-System Preferences > Privacy & Security > Security and select "App Store and identified developers".
+`System Preferences > Privacy & Security > Security and select "App Store and identified developers"`.
+
 Click "Open Anyway" next in the box that says `"quasar" was blocked from use because it is not from an identified developer."`
 
 <img width="726" alt="Screenshot 2023-06-04 at 12 26 59 AM" src="https://github.com/jcstein/node-app/assets/46639943/db505d6b-37c9-4757-8eed-4b03fdd53a99">
