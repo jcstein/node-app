@@ -10,7 +10,7 @@ v0.1.6 of this app runs on the [Arabica devnet](https://docs.celestia.org/nodes/
 * `🟢 Start your node`: this starts the light node
 * `🔴 Stop your node`: this stops the light node
 * `🪙 Check your balance`: this now displays a balance in TIA to 6 decimal places
-* `⛓️ Chain height`: fetches the chain height every 3s
+* `⛓️ Chain height`: fetches the chain height every 0.2s
 * `🗑️ Delete your data store`: deletes the data store for the node (use with caution)
 * `🔐 Delete your key store`: deletes the key store for the node, the accoutn `my_celes_key` (use with caution)
 * `🔥 Delete entire node store`: deletes both the data and key store ((use with caution)
