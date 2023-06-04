@@ -4,7 +4,7 @@ This repository is for quasar, a Celestia light node macOS app, written in Swift
 
 ## Features ⚙️
 
-v0.1.6-alpha of this app runs on the [Arabica devnet](https://docs.celestia.org/nodes/arabica-devnet/) and has the following functions:
+v0.1.6 of this app runs on the [Arabica devnet](https://docs.celestia.org/nodes/arabica-devnet/) and has the following functions:
 
 * `🟣 Initialize your Celestia light node`: this initializes a Celestia light node in the application's local storage
 * `🟢 Start your node`: this starts the light node
@@ -41,7 +41,8 @@ Click "Open Anyway" next in the box that says `"quasar" was blocked from use bec
 The current version requires:
 
 * macOS 13.1 or higher
-* Macs equipped with M1 or M2 chips (as the `celestia` binary is built specifically for ARM Macs in the alpha versions)
+* Macs equipped with M1 or M2 chips (as the `celestia` binary is built specifically for ARM Macs in the 
+versions)
 
 ## Application dependencies ⬇️
 
