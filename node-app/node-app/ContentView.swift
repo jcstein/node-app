@@ -287,7 +287,7 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            Text("Light node control panel")
+            Text("Light Node Control Panel")
                 .font(.largeTitle)
                 .padding()
             Text("Arabica devnet ☕️")
