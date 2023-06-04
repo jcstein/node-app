@@ -287,7 +287,7 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            Text("Light Node Control Panel")
+            Text("👋 I'm quasar ✨ a macOS Celestia node client")
                 .font(.largeTitle)
                 .padding()
             Text("Arabica devnet ☕️")
