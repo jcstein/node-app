@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  node-app
+//  quasar
 //
 //  Created by Josh Stein on 6/1/23.
 //
@@ -213,7 +213,7 @@ class ContentViewViewModel: ObservableObject {
     
     func deleteDataStore() {
        let fileManager = FileManager.default
-       let url = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "gm.node-app")?.appendingPathComponent(".celestia-light-arabica-8/data")
+       let url = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "org.joshcs.quasar")?.appendingPathComponent(".celestia-light-arabica-8/data")
 
        guard let path = url?.path else {
            print("❌ Invalid path")
@@ -236,7 +236,7 @@ class ContentViewViewModel: ObservableObject {
 
    func deleteKeyStore() {
        let fileManager = FileManager.default
-       let url = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "gm.node-app")?.appendingPathComponent(".celestia-light-arabica-8/keys")
+       let url = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "org.joshcs.quasar")?.appendingPathComponent(".celestia-light-arabica-8/keys")
 
        guard let path = url?.path else {
            print("❌ Invalid path")
@@ -259,7 +259,7 @@ class ContentViewViewModel: ObservableObject {
 
    func deleteNodeStore() {
        let fileManager = FileManager.default
-       let url = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "gm.node-app")?.appendingPathComponent(".celestia-light-arabica-8")
+       let url = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "org.joshcs.quasar")?.appendingPathComponent(".celestia-light-arabica-8")
 
        guard let path = url?.path else {
            print("❌ Invalid path")

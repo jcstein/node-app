@@ -1,13 +1,13 @@
 //
-//  node_appUITestsLaunchTests.swift
-//  node-appUITests
+//  quasarUITestsLaunchTests.swift
+//  quasarUITests
 //
-//  Created by Josh Stein on 6/1/23.
+//  Created by Josh Stein on 6/4/23.
 //
 
 import XCTest
 
-final class node_appUITestsLaunchTests: XCTestCase {
+final class quasarUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true

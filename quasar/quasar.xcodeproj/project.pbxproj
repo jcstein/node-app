@@ -1,0 +1,597 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		48B562F62A2C53AD00D3D5D7 /* quasarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B562E72A2C53AD00D3D5D7 /* quasarApp.swift */; };
+		48B562F72A2C53AD00D3D5D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48B562E82A2C53AD00D3D5D7 /* Assets.xcassets */; };
+		48B562F82A2C53AD00D3D5D7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48B562EA2A2C53AD00D3D5D7 /* Preview Assets.xcassets */; };
+		48B562F92A2C53AD00D3D5D7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B562EB2A2C53AD00D3D5D7 /* ContentView.swift */; };
+		48B562FA2A2C53AD00D3D5D7 /* celestia in Resources */ = {isa = PBXBuildFile; fileRef = 48B562ED2A2C53AD00D3D5D7 /* celestia */; };
+		48B563172A2C552300D3D5D7 /* quasarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B563162A2C552300D3D5D7 /* quasarUITests.swift */; };
+		48B563192A2C552300D3D5D7 /* quasarUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B563182A2C552300D3D5D7 /* quasarUITestsLaunchTests.swift */; };
+		48B563262A2C552C00D3D5D7 /* quasarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B563252A2C552C00D3D5D7 /* quasarTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		48B5631A2A2C552300D3D5D7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 48BC07DD2A29727100577849 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 48BC07E42A29727100577849;
+			remoteInfo = quasar;
+		};
+		48B563272A2C552C00D3D5D7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 48BC07DD2A29727100577849 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 48BC07E42A29727100577849;
+			remoteInfo = quasar;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		48B562E72A2C53AD00D3D5D7 /* quasarApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = quasarApp.swift; sourceTree = "<group>"; };
+		48B562E82A2C53AD00D3D5D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		48B562EA2A2C53AD00D3D5D7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		48B562EB2A2C53AD00D3D5D7 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		48B562EC2A2C53AD00D3D5D7 /* quasar.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = quasar.entitlements; sourceTree = "<group>"; };
+		48B562ED2A2C53AD00D3D5D7 /* celestia */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = celestia; sourceTree = "<group>"; };
+		48B5630E2A2C54C700D3D5D7 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		48B563142A2C552200D3D5D7 /* quasarUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = quasarUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		48B563162A2C552300D3D5D7 /* quasarUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = quasarUITests.swift; sourceTree = "<group>"; };
+		48B563182A2C552300D3D5D7 /* quasarUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = quasarUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		48B563232A2C552C00D3D5D7 /* quasarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = quasarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		48B563252A2C552C00D3D5D7 /* quasarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = quasarTests.swift; sourceTree = "<group>"; };
+		48BC07E52A29727100577849 /* quasar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = quasar.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		48B563112A2C552200D3D5D7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		48B563202A2C552C00D3D5D7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		48BC07E22A29727100577849 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		48B562E62A2C53AD00D3D5D7 /* quasar */ = {
+			isa = PBXGroup;
+			children = (
+				48B562E72A2C53AD00D3D5D7 /* quasarApp.swift */,
+				48B562E82A2C53AD00D3D5D7 /* Assets.xcassets */,
+				48B562E92A2C53AD00D3D5D7 /* Preview Content */,
+				48B562EB2A2C53AD00D3D5D7 /* ContentView.swift */,
+				48B562EC2A2C53AD00D3D5D7 /* quasar.entitlements */,
+			);
+			path = quasar;
+			sourceTree = "<group>";
+		};
+		48B562E92A2C53AD00D3D5D7 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				48B562EA2A2C53AD00D3D5D7 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		48B5630D2A2C54C700D3D5D7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				48B5630E2A2C54C700D3D5D7 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		48B563152A2C552300D3D5D7 /* quasarUITests */ = {
+			isa = PBXGroup;
+			children = (
+				48B563162A2C552300D3D5D7 /* quasarUITests.swift */,
+				48B563182A2C552300D3D5D7 /* quasarUITestsLaunchTests.swift */,
+			);
+			path = quasarUITests;
+			sourceTree = "<group>";
+		};
+		48B563242A2C552C00D3D5D7 /* quasarTests */ = {
+			isa = PBXGroup;
+			children = (
+				48B563252A2C552C00D3D5D7 /* quasarTests.swift */,
+			);
+			path = quasarTests;
+			sourceTree = "<group>";
+		};
+		48BC07DC2A29727100577849 = {
+			isa = PBXGroup;
+			children = (
+				48B562ED2A2C53AD00D3D5D7 /* celestia */,
+				48B562E62A2C53AD00D3D5D7 /* quasar */,
+				48B563152A2C552300D3D5D7 /* quasarUITests */,
+				48B563242A2C552C00D3D5D7 /* quasarTests */,
+				48BC07E62A29727100577849 /* Products */,
+				48B5630D2A2C54C700D3D5D7 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		48BC07E62A29727100577849 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				48BC07E52A29727100577849 /* quasar.app */,
+				48B563142A2C552200D3D5D7 /* quasarUITests.xctest */,
+				48B563232A2C552C00D3D5D7 /* quasarTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		48B563132A2C552200D3D5D7 /* quasarUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 48B5631C2A2C552300D3D5D7 /* Build configuration list for PBXNativeTarget "quasarUITests" */;
+			buildPhases = (
+				48B563102A2C552200D3D5D7 /* Sources */,
+				48B563112A2C552200D3D5D7 /* Frameworks */,
+				48B563122A2C552200D3D5D7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				48B5631B2A2C552300D3D5D7 /* PBXTargetDependency */,
+			);
+			name = quasarUITests;
+			productName = quasarUITests;
+			productReference = 48B563142A2C552200D3D5D7 /* quasarUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		48B563222A2C552C00D3D5D7 /* quasarTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 48B563292A2C552C00D3D5D7 /* Build configuration list for PBXNativeTarget "quasarTests" */;
+			buildPhases = (
+				48B5631F2A2C552C00D3D5D7 /* Sources */,
+				48B563202A2C552C00D3D5D7 /* Frameworks */,
+				48B563212A2C552C00D3D5D7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				48B563282A2C552C00D3D5D7 /* PBXTargetDependency */,
+			);
+			name = quasarTests;
+			productName = quasarTests;
+			productReference = 48B563232A2C552C00D3D5D7 /* quasarTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		48BC07E42A29727100577849 /* quasar */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 48BC080A2A29727200577849 /* Build configuration list for PBXNativeTarget "quasar" */;
+			buildPhases = (
+				48BC07E12A29727100577849 /* Sources */,
+				48BC07E22A29727100577849 /* Frameworks */,
+				48BC07E32A29727100577849 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = quasar;
+			productName = "node-app";
+			productReference = 48BC07E52A29727100577849 /* quasar.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		48BC07DD2A29727100577849 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
+				TargetAttributes = {
+					48B563132A2C552200D3D5D7 = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = 48BC07E42A29727100577849;
+					};
+					48B563222A2C552C00D3D5D7 = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = 48BC07E42A29727100577849;
+					};
+					48BC07E42A29727100577849 = {
+						CreatedOnToolsVersion = 14.2;
+					};
+				};
+			};
+			buildConfigurationList = 48BC07E02A29727100577849 /* Build configuration list for PBXProject "quasar" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 48BC07DC2A29727100577849;
+			productRefGroup = 48BC07E62A29727100577849 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				48BC07E42A29727100577849 /* quasar */,
+				48B563132A2C552200D3D5D7 /* quasarUITests */,
+				48B563222A2C552C00D3D5D7 /* quasarTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		48B563122A2C552200D3D5D7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		48B563212A2C552C00D3D5D7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		48BC07E32A29727100577849 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				48B562F82A2C53AD00D3D5D7 /* Preview Assets.xcassets in Resources */,
+				48B562F72A2C53AD00D3D5D7 /* Assets.xcassets in Resources */,
+				48B562FA2A2C53AD00D3D5D7 /* celestia in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		48B563102A2C552200D3D5D7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				48B563172A2C552300D3D5D7 /* quasarUITests.swift in Sources */,
+				48B563192A2C552300D3D5D7 /* quasarUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		48B5631F2A2C552C00D3D5D7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				48B563262A2C552C00D3D5D7 /* quasarTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		48BC07E12A29727100577849 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				48B562F92A2C53AD00D3D5D7 /* ContentView.swift in Sources */,
+				48B562F62A2C53AD00D3D5D7 /* quasarApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		48B5631B2A2C552300D3D5D7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 48BC07E42A29727100577849 /* quasar */;
+			targetProxy = 48B5631A2A2C552300D3D5D7 /* PBXContainerItemProxy */;
+		};
+		48B563282A2C552C00D3D5D7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 48BC07E42A29727100577849 /* quasar */;
+			targetProxy = 48B563272A2C552C00D3D5D7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		48B5631D2A2C552300D3D5D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DZ7874M2VD;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.celestia.quasarUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = quasar;
+			};
+			name = Debug;
+		};
+		48B5631E2A2C552300D3D5D7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DZ7874M2VD;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.celestia.quasarUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = quasar;
+			};
+			name = Release;
+		};
+		48B5632A2A2C552C00D3D5D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DZ7874M2VD;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.celestia.quasarTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/quasar.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/quasar";
+			};
+			name = Debug;
+		};
+		48B5632B2A2C552C00D3D5D7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DZ7874M2VD;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.celestia.quasarTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/quasar.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/quasar";
+			};
+			name = Release;
+		};
+		48BC08082A29727200577849 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		48BC08092A29727200577849 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		48BC080B2A29727200577849 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_ENTITLEMENTS = quasar/quasar.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"quasar/Preview Content\"";
+				DEVELOPMENT_TEAM = DZ7874M2VD;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Celestia light node";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = v0.1.6;
+				PRODUCT_BUNDLE_IDENTIFIER = org.joshcs.quasar;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		48BC080C2A29727200577849 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_ENTITLEMENTS = quasar/quasar.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"quasar/Preview Content\"";
+				DEVELOPMENT_TEAM = DZ7874M2VD;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Celestia light node";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = v0.1.6;
+				PRODUCT_BUNDLE_IDENTIFIER = org.joshcs.quasar;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		48B5631C2A2C552300D3D5D7 /* Build configuration list for PBXNativeTarget "quasarUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				48B5631D2A2C552300D3D5D7 /* Debug */,
+				48B5631E2A2C552300D3D5D7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		48B563292A2C552C00D3D5D7 /* Build configuration list for PBXNativeTarget "quasarTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				48B5632A2A2C552C00D3D5D7 /* Debug */,
+				48B5632B2A2C552C00D3D5D7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		48BC07E02A29727100577849 /* Build configuration list for PBXProject "quasar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				48BC08082A29727200577849 /* Debug */,
+				48BC08092A29727200577849 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		48BC080A2A29727200577849 /* Build configuration list for PBXNativeTarget "quasar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				48BC080B2A29727200577849 /* Debug */,
+				48BC080C2A29727200577849 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 48BC07DD2A29727100577849 /* Project object */;
+}

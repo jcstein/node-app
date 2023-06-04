@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "48BC07E42A29727100577849"
-               BuildableName = "node-app.app"
-               BlueprintName = "node-app"
-               ReferencedContainer = "container:node-app.xcodeproj">
+               BuildableName = "quasar.app"
+               BlueprintName = "quasar"
+               ReferencedContainer = "container:quasar.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,10 +33,10 @@
             parallelizable = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "48BC07F52A29727200577849"
-               BuildableName = "node-appTests.xctest"
-               BlueprintName = "node-appTests"
-               ReferencedContainer = "container:node-app.xcodeproj">
+               BlueprintIdentifier = "48B563132A2C552200D3D5D7"
+               BuildableName = "quasarUITests.xctest"
+               BlueprintName = "quasarUITests"
+               ReferencedContainer = "container:quasar.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -44,10 +44,10 @@
             parallelizable = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "48BC07FF2A29727200577849"
-               BuildableName = "node-appUITests.xctest"
-               BlueprintName = "node-appUITests"
-               ReferencedContainer = "container:node-app.xcodeproj">
+               BlueprintIdentifier = "48B563222A2C552C00D3D5D7"
+               BuildableName = "quasarTests.xctest"
+               BlueprintName = "quasarTests"
+               ReferencedContainer = "container:quasar.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -67,9 +67,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "48BC07E42A29727100577849"
-            BuildableName = "node-app.app"
-            BlueprintName = "node-app"
-            ReferencedContainer = "container:node-app.xcodeproj">
+            BuildableName = "quasar.app"
+            BlueprintName = "quasar"
+            ReferencedContainer = "container:quasar.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -84,9 +84,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "48BC07E42A29727100577849"
-            BuildableName = "node-app.app"
-            BlueprintName = "node-app"
-            ReferencedContainer = "container:node-app.xcodeproj">
+            BuildableName = "quasar.app"
+            BlueprintName = "quasar"
+            ReferencedContainer = "container:quasar.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

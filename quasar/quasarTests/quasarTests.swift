@@ -1,14 +1,13 @@
 //
-//  node_appTests.swift
-//  node-appTests
+//  quasarTests.swift
+//  quasarTests
 //
-//  Created by Josh Stein on 6/1/23.
+//  Created by Josh Stein on 6/4/23.
 //
 
 import XCTest
-@testable import node_app
 
-final class node_appTests: XCTestCase {
+final class quasarTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -28,7 +27,7 @@ final class node_appTests: XCTestCase {
 
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
-        self.measure {
+        measure {
             // Put the code you want to measure the time of here.
         }
     }
