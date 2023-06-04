@@ -1,17 +1,19 @@
-# Celestia light node macOS app ✨
+# quasar
 
-This repository is for the Celestia light node macOS app, written in Swift.
+## a Celestia light node macOS app ✨
+
+This repository is for quasar, a Celestia light node macOS app, written in Swift.
 
 ## Installation 🏗️
 
 ### macOS download 💾
 
-The latest release with `Celestia_light_node_Installer-v0.1.5-alpha.dmg`
+The latest release with `quasar.dmg`
 images for Mac can be found on the
 [latest release](https://github.com/jcstein/node-app/releases/latest) page.
 
-Download the `.dmg` to your computer, and open it from the downloads folder.
-Then, drag the "node-app" icon to the "Applications" folder.
+Download `quasar.dmg` to your computer and open it from your downloads folder.
+Then, drag the "quasar" icon to the "Applications" folder.
 
 <img width="912" alt="Screenshot 2023-06-03 at 11 03 10 PM" src="https://github.com/jcstein/node-app/assets/46639943/01a7ccc4-d717-401b-8ebb-1ad2813d129e">
 
@@ -19,7 +21,7 @@ Then, drag the "node-app" icon to the "Applications" folder.
 
 If you encounter a warning when you open the app, you will need to go to your
 System Preferences > Privacy & Security > Security and select "App Store and identified developers".
-Click "Open Anyway" next in the box that says `"node-app" was blocked from use because it is not from an identified developer."`
+Click "Open Anyway" next in the box that says `"quasar" was blocked from use because it is not from an identified developer."`
 
 <img width="726" alt="Screenshot 2023-06-04 at 12 26 59 AM" src="https://github.com/jcstein/node-app/assets/46639943/db505d6b-37c9-4757-8eed-4b03fdd53a99">
 
