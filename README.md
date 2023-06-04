@@ -35,7 +35,7 @@ Then, drag the "quasar" icon to the "Applications" folder.
 ### Troubleshooting 🛠️
 
 If you encounter a warning when you open the app, you will need to go to your
-`System Preferences > Privacy & Security > Security and select "App Store and identified developers"`.
+System Preferences > Privacy & Security > Security and select "App Store and identified developers".
 
 Click "Open Anyway" next in the box that says `"quasar" was blocked from use because it is not from an identified developer."`
 
