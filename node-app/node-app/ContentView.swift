@@ -108,7 +108,7 @@ class ContentViewViewModel: ObservableObject {
         isRunningNode = true
         process = task
 
-        timer = Timer.scheduledTimer(withTimeInterval: 3.0, repeats: true) { [weak self] _ in
+        timer = Timer.scheduledTimer(withTimeInterval: 0.2, repeats: true) { [weak self] _ in
             self?.checkChainHeight()
         }
     }
