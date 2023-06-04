@@ -210,6 +210,75 @@ class ContentViewViewModel: ObservableObject {
             task.waitUntilExit()
         }
     }
+    
+    func deleteDataStore() {
+        let fileManager = FileManager.default
+        let url = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "gm.node-app")?.appendingPathComponent(".celestia-light-arabica-8/data")
+
+        guard let path = url?.path else {
+            print("❌ Invalid path")
+            return
+        }
+
+        print("👀 Attempting to delete data store at: \(path)")
+
+        do {
+            if fileManager.fileExists(atPath: path) {
+                try fileManager.removeItem(atPath: path)
+                print("🗑️ Node store deleted")
+            } else {
+                print("❓ Data store does not exist")
+            }
+        } catch let error {
+            print("❌ Error deleting data store: \(error)")
+        }
+    }
+    
+    func deleteKeyStore() {
+        let fileManager = FileManager.default
+        let url = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "gm.node-app")?.appendingPathComponent(".celestia-light-arabica-8/keys")
+
+        guard let path = url?.path else {
+            print("❌ Invalid path")
+            return
+        }
+
+        print("👀 Attempting to delete key store at: \(path)")
+
+        do {
+            if fileManager.fileExists(atPath: path) {
+                try fileManager.removeItem(atPath: path)
+                print("🗑️ Key store deleted")
+            } else {
+                print("❓ Key store does not exist")
+            }
+        } catch let error {
+            print("❌ Error deleting key store: \(error)")
+        }
+    }
+    
+    func deleteNodeStore() {
+        let fileManager = FileManager.default
+        let url = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "gm.node-app")?.appendingPathComponent(".celestia-light-arabica-8")
+
+        guard let path = url?.path else {
+            print("❌ Invalid path")
+            return
+        }
+
+        print("👀 Attempting to delete node store at: \(path)")
+
+        do {
+            if fileManager.fileExists(atPath: path) {
+                try fileManager.removeItem(atPath: path)
+                print("🗑️ Node store deleted")
+            } else {
+                print("❓ Node store does not exist")
+            }
+        } catch let error {
+            print("❌ Error deleting node store: \(error)")
+        }
+    }
 }
 
 struct ContentView: View {
@@ -219,8 +288,10 @@ struct ContentView: View {
     var body: some View {
         VStack {
             Text("Light node control panel")
-                            .font(.largeTitle)
-                            .padding()
+                .font(.largeTitle)
+                .padding()
+            Text("Arabica devnet")
+                .font(.headline)
             HStack {
                 VStack {
                     GroupBox {
@@ -234,6 +305,25 @@ struct ContentView: View {
                             viewModel.startNode()
                         }) {
                             Text("🟢 Start your node")
+                        }.disabled(viewModel.isRunningNode)
+                    }
+                    padding(0)
+                    GroupBox {
+                        Text("⚠️ Danger zone: irreversible")
+                        Button(action: {
+                            viewModel.deleteDataStore()
+                        }) {
+                            Text("🗑️ Delete your data store")
+                        }.disabled(viewModel.isRunningNode)
+                        Button(action: {
+                            viewModel.deleteKeyStore()
+                        }) {
+                            Text("🔐 Delete your key store")
+                        }.disabled(viewModel.isRunningNode)
+                        Button(action: {
+                            viewModel.deleteNodeStore()
+                        }) {
+                            Text("🔥 Delete entire node store")
                         }.disabled(viewModel.isRunningNode)
                     }
                 }
@@ -269,7 +359,6 @@ struct ContentView: View {
                             
                             Text("\(balance, specifier: "%.6f") TIA")
                         }
-                        
                         Text("⛓️ Chain height: \(viewModel.chainHeight ?? "🔄 fetching... ")")
                             .padding()
                     }
@@ -281,13 +370,13 @@ struct ContentView: View {
             case .mnemonicAlert:
                 return Alert(
                     title: Text("✅ Initialization Complete"),
-                    message: Text("MNEMONIC (save this somewhere safe!!!): \(viewModel.mnemonic ?? "")\n\nADDRESS: \(viewModel.address ?? "")"),
+                    message: Text("🔐 MNEMONIC (save this somewhere safe!!!): \(viewModel.mnemonic ?? "")\n\n📢 ADDRESS: \(viewModel.address ?? "")"),
                     dismissButton: .default(Text("OK"))
                 )
             case .alreadyInitializedAlert:
                 return Alert(
                     title: Text("✅ Initialization Complete"),
-                    message: Text("Your node is already initialized 👍"),
+                    message: Text("Your node is already initialized 🫡"),
                     dismissButton: .default(Text("OK"))
                 )
             }
