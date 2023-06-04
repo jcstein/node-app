@@ -1,6 +1,6 @@
 # quasar ✨ a Celestia light node macOS app
 
-This repository is for quasar, a Celestia light node macOS app, written in Swift.
+This repository is for quasar, a [Celestia light node](https://docs.celestia.org/nodes/light-node/) macOS app, written in Swift.
 
 This is [v0.1.6-alpha](https://github.com/jcstein/node-app/releases/tag/quasar_v0.1.6-alpha_CN-v0.11.0-rc2_Arabica) of quasar.
 
