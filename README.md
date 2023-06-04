@@ -19,7 +19,7 @@ Then, drag the "node-app" icon to the "Applications" folder.
 
 If you encounter a warning when you open the app, you will need to go to your
 System Preferences > Privacy & Security > Security and select "App Store and identified developers".
-Click "Open Anyway" next in the box that says `"node-app" was blocked from use because it is not from an identified developer."
+Click "Open Anyway" next in the box that says `"node-app" was blocked from use because it is not from an identified developer."`
 
 <img width="726" alt="Screenshot 2023-06-04 at 12 26 59 AM" src="https://github.com/jcstein/node-app/assets/46639943/db505d6b-37c9-4757-8eed-4b03fdd53a99">
 
