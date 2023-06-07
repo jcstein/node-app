@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AppKit
 
 class ContentViewViewModel: ObservableObject {
     @Published var isRunningNode = false
@@ -381,6 +382,8 @@ class ContentViewViewModel: ObservableObject {
 struct ContentView: View {
     @StateObject private var viewModel = ContentViewViewModel()
     @State private var balance: Double = 0.0
+    @State private var showAlert = false
+    @State private var showMnemonicView = false
     
     func copyToClipboard(_ text: String) {
         let pasteboard = NSPasteboard.general
@@ -474,7 +477,7 @@ struct ContentView: View {
                                     Button(action: {
                                         viewModel.initializeNode()
                                     }) {
-                                        Text("🟣 Initialize your Celestia light node")
+                                        Text("🟣 Initialize your Celestia light node").padding(.vertical, 10)
                                     }.disabled(viewModel.isRunningNode)
                                     Button(action: {
                                         viewModel.startNode()
@@ -628,7 +631,9 @@ struct ContentView: View {
                 return Alert(
                     title: Text("✅ Initialization Complete"),
                     message: Text("🔐 MNEMONIC (save this somewhere safe!!!): \(viewModel.mnemonic ?? "")\n\n📢 ADDRESS: \(viewModel.address ?? "")"),
-                    dismissButton: .default(Text("OK"))
+                    dismissButton: .default(Text("OK")) {
+                        showMnemonicView = true
+                    }
                 )
             case .alreadyInitializedAlert:
                 return Alert(
@@ -690,6 +695,39 @@ struct ContentView: View {
                     message: Text("Node store not found."),
                     dismissButton: .default(Text("OK"))
                 )
+            }
+        }
+        .sheet(isPresented: $showMnemonicView) {
+            VStack {
+                Text("📝 Save your mnemonic somewhere safe").font(.title).padding()
+                Text("🔑 This is currently the only way to back up your account").font(.title2).padding()
+                VStack {
+                    GroupBox {
+                        Text("🔐 MNEMONIC (save this somewhere safe!!!): \(viewModel.mnemonic ?? "")")
+                        Button(action: {
+                            let mnemonic = viewModel.mnemonic ?? ""
+                            NSPasteboard.general.clearContents()
+                            NSPasteboard.general.writeObjects([mnemonic as NSString])
+                        }) {
+                            Text("Copy mnemonic to clipboard")
+                        }
+                    }
+                    GroupBox {
+                        Text("📢 Public address: \(viewModel.address ?? "")")
+                        Button(action: {
+                            let address = viewModel.address ?? ""
+                            NSPasteboard.general.clearContents()
+                            NSPasteboard.general.writeObjects([address as NSString])
+                        }) {
+                            Text("Copy address to clipboard")
+                        }
+                    }
+                    Button("I saved my mnemonic somewhere safe") {
+                        self.showMnemonicView = false
+                    }
+                    .padding()
+                }
+                .padding()
             }
         }
     }
