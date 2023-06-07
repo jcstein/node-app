@@ -38,7 +38,7 @@ images for Mac can be found on the
 Download `quasar.dmg` to your computer and open it from your downloads folder.
 Then, drag the "quasar" icon to the "Applications" folder.
 
-<img width="912" alt="Screenshot 2023-06-04 at 1 59 25 AM" src="https://github.com/jcstein/node-app/assets/46639943/9b91f374-e459-4d59-9b02-acf1e07ebac9">
+<img width="912" alt="Screenshot 2023-06-07 at 1 03 06 AM" src="https://github.com/jcstein/node-app/assets/46639943/d5eee61f-bdbc-43da-85c0-b1b15b1af97b">
 
 ### Troubleshooting 🛠️
 
