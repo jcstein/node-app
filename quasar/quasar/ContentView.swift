@@ -418,29 +418,48 @@ struct ContentView: View {
                                 HStack {
                                     Text("🧪 Sampled chain head")
                                     Spacer()
-                                    Text(viewModel.sampledChainHead == "1" ? "🔄 fetching... " : viewModel.sampledChainHead ?? "🔄 node is starting up... ")
-                                    Text(String(format: "(%.2f%%)", viewModel.sampledChainHeadProgress * 100))
+                                    if viewModel.sampledChainHead == "1" {
+                                        Text("🔄 node is starting up...")
+                                    } else {
+                                        Group {
+                                            Text(viewModel.sampledChainHead ?? "🔄 fetching... ")
+                                            Text(String(format: "(%.2f%%)", viewModel.sampledChainHeadProgress * 100))
+                                        }
+                                    }
                                 }
                                 ProgressView(value: viewModel.sampledChainHeadProgress)
                             }
+
                             GroupBox {
                                 HStack {
                                     Text("🎣 Catchup head")
                                     Spacer()
-                                    Text(viewModel.catchupHead == "1" ? "🔄 fetching... " : viewModel.catchupHead ?? "🔄  node is starting up... ")
-                                    Text(String(format: "(%.2f%%)", viewModel.catchupHeadProgress * 100))
+                                    if viewModel.catchupHead == "1" {
+                                        Text("🔄 node is starting up...")
+                                    } else {
+                                        Group {
+                                            Text(viewModel.catchupHead ?? "🔄 fetching... ")
+                                            Text(String(format: "(%.2f%%)", viewModel.catchupHeadProgress * 100))
+                                        }
+                                    }
                                 }
                                 ProgressView(value: viewModel.catchupHeadProgress)
                             }
+
                             GroupBox {
                                 HStack {
                                     Text("🌐 Network head height")
                                     Spacer()
-                                    Text(viewModel.networkHeadHeight == "1" ? "🔄 fetching... " : viewModel.networkHeadHeight ?? "🔄  node is starting up... ")
-                                    Text(String(format: "(%.2f%%)", viewModel.networkHeadHeightProgress * 100))
+                                    if viewModel.networkHeadHeight == "1" {
+                                        Text("🔄 node is starting up...")
+                                    } else {
+                                        Group {
+                                            Text(viewModel.networkHeadHeight ?? "🔄 fetching... ")
+                                            Text(String(format: "(%.2f%%)", viewModel.networkHeadHeightProgress * 100))
+                                        }
+                                    }
                                 }
                                 ProgressView(value: viewModel.networkHeadHeightProgress)
-
                             }
                         }.padding(10)
                     }
