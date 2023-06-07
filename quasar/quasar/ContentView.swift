@@ -589,19 +589,19 @@ struct ContentView: View {
             if !viewModel.isRunningNode {
                 GroupBox {
                     HStack {
-                        Text("🟣 Learn more about Celestia")
+                        Text("📖 Learn more about light nodes on Celestia's documentation")
                             .font(.headline)
                             .padding()
-                        Link("celestia.org/what-is-celestia", destination: URL(string: "https://celestia.org/what-is-celestia")!)
+                        Link("docs.celestia.org/nodes/light-node", destination: URL(string: "https://docs.celestia.org/nodes/light-node")!)
                             .padding()
                     }
                 }
                 GroupBox {
                     HStack {
-                        Text("📖 Learn more about light nodes on Celestia's documentation")
+                        Text("🟣 Learn more about Celestia")
                             .font(.headline)
                             .padding()
-                        Link("docs.celestia.org/nodes/light-node", destination: URL(string: "https://docs.celestia.org/nodes/light-node")!)
+                        Link("celestia.org/what-is-celestia", destination: URL(string: "https://celestia.org/what-is-celestia")!)
                             .padding()
                     }
                 }
