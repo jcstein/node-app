@@ -21,7 +21,7 @@ struct node_appApp: App {
 class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ notification: Notification) {
         if let window = NSApplication.shared.windows.first {
-            window.setContentSize(NSSize(width: 800, height: 650))
+            window.setContentSize(NSSize(width: 800, height: 733))
         }
     }
 }

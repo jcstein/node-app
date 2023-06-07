@@ -12,16 +12,33 @@ class ContentViewViewModel: ObservableObject {
     @Published var mnemonic: String?
     @Published var address: String?
     @Published var chainHeight: String?
-
+    @Published var sampledChainHead: String?
+    @Published var catchupHead: String?
+    @Published var networkHeadHeight: String?
+    @Published var sampledChainHeadProgress: Double = 0.0
+    @Published var catchupHeadProgress: Double = 0.0
+    @Published var networkHeadHeightProgress: Double = 1.0
+    @Published var accountAddress: String?
+    
     private var process: Process?
     private var timer: Timer?
+    private var timer2: Timer?
     private var processId: Int32?
     private var terminationAttempted = false
-
+    
     enum AlertType: Int, Identifiable {
         case mnemonicAlert
         case alreadyInitializedAlert
-
+        case deletionSuccessAlert
+        case deletionErrorAlert
+        case deletionErrorAlertErr
+        case deletionKeySuccessAlert
+        case deletionKeyErrorAlert
+        case deletionKeyErrorAlertErr
+        case deletionDataSuccessAlert
+        case deletionDataErrorAlert
+        case deletionDataErrorAlertErr
+        
         var id: Int { rawValue }
     }
     
@@ -56,7 +73,6 @@ class ContentViewViewModel: ObservableObject {
                 }
             }
         }
-        
         task.waitUntilExit()
         let status = task.terminationStatus
         print("Exit status: \(status)")
@@ -72,7 +88,7 @@ class ContentViewViewModel: ObservableObject {
         }
         return nil
     }
-
+    
     func extractAddress(from output: String) -> String? {
         let keyword = "ADDRESS:"
         let outputLines = output.components(separatedBy: "\n")
@@ -107,39 +123,43 @@ class ContentViewViewModel: ObservableObject {
         
         isRunningNode = true
         process = task
-
+        
         timer = Timer.scheduledTimer(withTimeInterval: 0.2, repeats: true) { [weak self] _ in
-            self?.checkChainHeight()
+            self?.querySamplingStats()
+        }
+        
+        timer2 = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { [weak self] _ in
+            self?.queryAccountAddress()
         }
     }
     
     func stopCommand() {
         process?.terminate()
         terminationAttempted = true
-
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.checkIfProcessIsRunning()
         }
     }
-
+    
     func checkIfProcessIsRunning() {
         guard let processId = processId else { return }
         
         let task = Process()
         task.launchPath = "/usr/bin/env"
         task.arguments = ["bash", "-c", "ps -p \(processId)"]
-
+        
         let pipe = Pipe()
         task.standardOutput = pipe
         task.standardError = pipe
-
+        
         DispatchQueue.global().async {
             task.launch()
             task.waitUntilExit()
             
             let data = pipe.fileHandleForReading.readDataToEndOfFile()
             let output = String(data: data, encoding: .utf8)
-
+            
             DispatchQueue.main.async {
                 // Check if the process is still running
                 if output?.contains("\(processId)") == true {
@@ -153,27 +173,29 @@ class ContentViewViewModel: ObservableObject {
                 } else {
                     self.isRunningNode = false
                     self.timer?.invalidate()
+                    self.timer2?.invalidate()
                     self.timer = nil
+                    self.timer2 = nil
                 }
             }
         }
     }
-
+    
     func killProcess() {
         guard let processId = processId else { return }
         
         let task = Process()
         task.launchPath = "/usr/bin/env"
         task.arguments = ["bash", "-c", "kill -9 \(processId)"]
-
+        
         DispatchQueue.global().async {
             task.launch()
             task.waitUntilExit()
         }
     }
-
-    func checkChainHeight() {
-        let command = "curl -s -X GET http://localhost:26659/head"
+    
+    func querySamplingStats() {
+        let command = "cd \(Bundle.main.resourcePath!); ./celestia rpc das SamplingStats --auth $(./celestia light auth admin --p2p.network arabica)"
         
         let task = Process()
         task.launchPath = "/usr/bin/env"
@@ -185,18 +207,32 @@ class ContentViewViewModel: ObservableObject {
         
         task.terminationHandler = { process in
             let data = pipe.fileHandleForReading.readDataToEndOfFile()
-            if data.isEmpty {
-                print("No data received from API")
-                return
-            }
-
             if let output = String(data: data, encoding: .utf8) {
                 do {
-                    if let dict = try JSONSerialization.jsonObject(with: Data(output.utf8), options: []) as? [String: Any],
-                       let headerDict = dict["header"] as? [String: Any],
-                       let height = headerDict["height"] as? String {
-                        DispatchQueue.main.async {
-                            self.chainHeight = height
+                    if let jsonData = output.data(using: .utf8) {
+                        let json = try JSONSerialization.jsonObject(with: jsonData, options: []) as? [String: Any]
+                        if let result = json?["result"] as? [String: Any] {
+                            DispatchQueue.main.async {
+                              if let sampledChainHead = result["head_of_sampled_chain"] as? Int {
+                                  print("Sampled Chain Head: \(sampledChainHead)")
+                                  self.sampledChainHead = String(sampledChainHead)
+                                  if let networkHeadHeight = result["network_head_height"] as? Int {
+                                      self.sampledChainHeadProgress = Double(sampledChainHead) / Double(networkHeadHeight)
+                                  }
+                              }
+                              if let catchupHead = result["head_of_catchup"] as? Int {
+                                  print("Catchup Head: \(catchupHead)")
+                                  self.catchupHead = String(catchupHead)
+                                  if let networkHeadHeight = result["network_head_height"] as? Int {
+                                      self.catchupHeadProgress = Double(catchupHead) / Double(networkHeadHeight)
+                                  }
+                              }
+                              if let networkHeadHeight = result["network_head_height"] as? Int {
+                                  print("Network Head Height: \(networkHeadHeight)")
+                                  self.networkHeadHeight = String(networkHeadHeight)
+                                  self.networkHeadHeightProgress = 1.0
+                              }
+                          }
                         }
                     }
                 } catch let error {
@@ -204,175 +240,366 @@ class ContentViewViewModel: ObservableObject {
                 }
             }
         }
-        
         DispatchQueue.global().async {
             task.launch()
             task.waitUntilExit()
         }
     }
     
+    func queryAccountAddress() {
+       let command = "cd \(Bundle.main.resourcePath!); ./celestia rpc state AccountAddress --auth $(./celestia light auth admin --p2p.network arabica)"
+       
+       let task = Process()
+       task.launchPath = "/usr/bin/env"
+       task.arguments = ["bash", "-c", command]
+       
+       let pipe = Pipe()
+       task.standardOutput = pipe
+       task.standardError = pipe
+       
+       task.terminationHandler = { process in
+           let data = pipe.fileHandleForReading.readDataToEndOfFile()
+           if let output = String(data: data, encoding: .utf8) {
+               do {
+                   if let jsonData = output.data(using: .utf8) {
+                       let json = try JSONSerialization.jsonObject(with: jsonData, options: []) as? [String: Any]
+                       if let result = json?["result"] as? String {
+                           DispatchQueue.main.async {
+                               self.accountAddress = result
+                           }
+                       }
+                   }
+               } catch let error {
+                   print("Failed to parse JSON: \(error)")
+               }
+           }
+       }
+       
+       DispatchQueue.global().async {
+           task.launch()
+           task.waitUntilExit()
+       }
+   }
+
     func deleteDataStore() {
-       let fileManager = FileManager.default
-       let url = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "org.joshcs.quasar")?.appendingPathComponent(".celestia-light-arabica-8/data")
-
-       guard let path = url?.path else {
-           print("❌ Invalid path")
-           return
-       }
-
-       print("👀 Attempting to delete data store at: \(path)")
-
-       do {
-           if fileManager.fileExists(atPath: path) {
-               try fileManager.removeItem(atPath: path)
-               print("🗑️ Node store deleted")
-           } else {
-               print("❓ Data store does not exist")
-           }
-       } catch let error {
-           print("❌ Error deleting data store: \(error)")
-       }
-   }
-
-   func deleteKeyStore() {
-       let fileManager = FileManager.default
-       let url = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "org.joshcs.quasar")?.appendingPathComponent(".celestia-light-arabica-8/keys")
-
-       guard let path = url?.path else {
-           print("❌ Invalid path")
-           return
-       }
-
-       print("👀 Attempting to delete key store at: \(path)")
-
-       do {
-           if fileManager.fileExists(atPath: path) {
-               try fileManager.removeItem(atPath: path)
-               print("🗑️ Key store deleted")
-           } else {
-               print("❓ Key store does not exist")
-           }
-       } catch let error {
-           print("❌ Error deleting key store: \(error)")
-       }
-   }
-
-   func deleteNodeStore() {
-       let fileManager = FileManager.default
-       let url = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "org.joshcs.quasar")?.appendingPathComponent(".celestia-light-arabica-8")
-
-       guard let path = url?.path else {
-           print("❌ Invalid path")
-           return
-       }
-
-       print("👀 Attempting to delete node store at: \(path)")
-
-       do {
-           if fileManager.fileExists(atPath: path) {
-               try fileManager.removeItem(atPath: path)
-               print("🗑️ Node store deleted")
-           } else {
-               print("❓ Node store does not exist")
-           }
-       } catch let error {
-           print("❌ Error deleting node store: \(error)")
-       }
-   }
+        let fileManager = FileManager.default
+        let url = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "org.joshcs.quasar")?.appendingPathComponent(".celestia-light-arabica-8/data")
+        
+        guard let path = url?.path else {
+            print("❌ Invalid path")
+            return
+        }
+        
+        print("👀 Attempting to delete data store at: \(path)")
+        
+        do {
+            if fileManager.fileExists(atPath: path) {
+                try fileManager.removeItem(atPath: path)
+                print("🗑️ Node store deleted")
+                DispatchQueue.main.async {
+                    self.alertType = .deletionSuccessAlert
+                }
+            } else {
+                print("❓ Data store does not exist")
+                DispatchQueue.main.async {
+                    self.alertType = .deletionErrorAlert
+                }
+            }
+        } catch let error {
+            print("❌ Error deleting data store: \(error)")
+            DispatchQueue.main.async {
+                self.alertType = .deletionErrorAlertErr
+            }
+        }
+    }
+    
+    func deleteKeyStore() {
+        let fileManager = FileManager.default
+        let url = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "org.joshcs.quasar")?.appendingPathComponent(".celestia-light-arabica-8/keys")
+        
+        guard let path = url?.path else {
+            print("❌ Invalid path")
+            return
+        }
+        
+        print("👀 Attempting to delete key store at: \(path)")
+        
+        do {
+            if fileManager.fileExists(atPath: path) {
+                try fileManager.removeItem(atPath: path)
+                print("🗑️ Key store deleted")
+                DispatchQueue.main.async {
+                    self.alertType = .deletionKeySuccessAlert
+                }
+            } else {
+                print("❓ Key store does not exist")
+                DispatchQueue.main.async {
+                    self.alertType = .deletionKeyErrorAlert
+                }
+            }
+        } catch let error {
+            print("❌ Error deleting key store: \(error)")
+            DispatchQueue.main.async {
+                self.alertType = .deletionKeyErrorAlertErr
+            }
+        }
+    }
+    
+    func deleteNodeStore() {
+        let fileManager = FileManager.default
+        let url = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "org.joshcs.quasar")?.appendingPathComponent(".celestia-light-arabica-8")
+        
+        guard let path = url?.path else {
+            print("❌ Invalid path")
+            return
+        }
+        
+        print("👀 Attempting to delete node store at: \(path)")
+        
+        do {
+            if fileManager.fileExists(atPath: path) {
+                try fileManager.removeItem(atPath: path)
+                print("🗑️ Node store deleted")
+                DispatchQueue.main.async {
+                    self.alertType = .deletionDataSuccessAlert
+                }
+            } else {
+                print("❓ Node store does not exist")
+                DispatchQueue.main.async {
+                    self.alertType = .deletionDataErrorAlert
+                }
+            }
+        } catch let error {
+            print("❌ Error deleting node store: \(error)")
+            DispatchQueue.main.async {
+                self.alertType = .deletionDataErrorAlertErr
+            }
+        }
+    }
 }
 
 struct ContentView: View {
     @StateObject private var viewModel = ContentViewViewModel()
     @State private var balance: Double = 0.0
     
+    func copyToClipboard(_ text: String) {
+        let pasteboard = NSPasteboard.general
+        pasteboard.clearContents()
+        pasteboard.setString(text, forType: .string)
+    }
+    
     var body: some View {
         VStack {
-            Text("👋 I'm quasar ✨ a macOS Celestia node client")
-                .font(.largeTitle)
-                .padding()
-            Text("Arabica devnet ☕️")
-                .font(.headline)
-            HStack {
-                VStack {
-                    GroupBox {
-                        VStack {
-                            Button(action: {
-                                viewModel.initializeNode()
-                            }) {
-                                Text("🟣 Initialize your Celestia light node")
-                            }.disabled(viewModel.isRunningNode).font(.headline)
-                            
-                            Button(action: {
-                                viewModel.startNode()
-                            }) {
-                                Text("🟢 Start your node")
-                            }.disabled(viewModel.isRunningNode).font(.headline)
-                        }
-                        .padding()
-                    }
-                    GroupBox {
-                        VStack {
-                            Text("⚠️ Danger zone: irreversible").font(.headline)
-                            Button(action: {
-                                viewModel.deleteDataStore()
-                            }) {
-                                Text("🗑️ Delete your data store").italic()
-                            }.disabled(viewModel.isRunningNode)
-                            Button(action: {
-                                viewModel.deleteKeyStore()
-                            }) {
-                                Text("🔐 Delete your key store").italic()
-                            }.disabled(viewModel.isRunningNode)
-                            Button(action: {
-                                viewModel.deleteNodeStore()
-                            }) {
-                                Text("🔥 Delete entire node store").italic()
-                            }.disabled(viewModel.isRunningNode)
-                        }
-                        .padding()
-                    }
-                }
-                .padding()
-                .frame(maxWidth: .infinity)
-                .border(Color.gray, width: 300)
-                GroupBox {
-                    VStack {
-                        if viewModel.isRunningNode {
-                            ProgressView("🟢 Your light node is running...")
-                                .padding()
-                        }
-                        Button(action: {
-                            viewModel.stopCommand()
-                        }) {
-                            Text("🔴 Stop your node")
-                        }.disabled(!viewModel.isRunningNode)
-                    }
-                    .padding()
-                }
-                .padding()
-                .frame(maxWidth: .infinity)
-                .border(Color.gray, width: 300)
-            }
-            .padding(.vertical, 10)
-            HStack {
+            VStack {
                 if viewModel.isRunningNode {
+                    HStack {
+                        Text("🚀 Celestia light node is running")
+                            .font(.largeTitle)
+                            .padding(.trailing)
+                        Spacer()
+                        Text("Arabica devnet ☕️")
+                            .font(.largeTitle)
+                            .padding(.leading)
+                    }.padding()
+                } else {
                     VStack {
-                        GroupBox {
-                            VStack {
-                                Button(action: {
-                                    checkBalance()
-                                }) {
-                                    Text("🪙 Check your balance").font(.headline)
-                                }
-                                
-                                Text("\(balance, specifier: "%.6f") TIA")
-                            }.padding()
-                        }
-                        
-                        Text("⛓️ Chain height: \(viewModel.chainHeight ?? "🔄 fetching... ")")
+                        Text("👋 I'm quasar ✨ a macOS Celestia node client")
+                            .font(.largeTitle)
                             .padding()
                     }
+                }
+            }
+            HStack {
+                if viewModel.isRunningNode {
+                    GroupBox {
+                        VStack {
+                            Text("🔬 DASer Sampling Statistics").font(.title)
+                            GroupBox {
+                                HStack {
+                                    Text("🧪 Sampled chain head")
+                                    Spacer()
+                                    Text(viewModel.sampledChainHead == "1" ? "🔄 fetching... " : viewModel.sampledChainHead ?? "🔄 node is starting up... ")
+                                    Text(String(format: "(%.2f%%)", viewModel.sampledChainHeadProgress * 100))
+                                }
+                                ProgressView(value: viewModel.sampledChainHeadProgress)
+                            }
+                            GroupBox {
+                                HStack {
+                                    Text("🎣 Catchup head")
+                                    Spacer()
+                                    Text(viewModel.catchupHead == "1" ? "🔄 fetching... " : viewModel.catchupHead ?? "🔄  node is starting up... ")
+                                    Text(String(format: "(%.2f%%)", viewModel.catchupHeadProgress * 100))
+                                }
+                                ProgressView(value: viewModel.catchupHeadProgress)
+                            }
+                            GroupBox {
+                                HStack {
+                                    Text("🌐 Network head height")
+                                    Spacer()
+                                    Text(viewModel.networkHeadHeight == "1" ? "🔄 fetching... " : viewModel.networkHeadHeight ?? "🔄  node is starting up... ")
+                                    Text(String(format: "(%.2f%%)", viewModel.networkHeadHeightProgress * 100))
+                                }
+                                ProgressView(value: viewModel.networkHeadHeightProgress)
+
+                            }
+                        }.padding(10)
+                    }
                     .padding()
+                }
+            }
+                    if !viewModel.isRunningNode {
+                            VStack {
+                            GroupBox {
+                                VStack {
+                                    Text("🏗️ Setup & run your Node").font(.title).padding(.vertical, 5)
+                                    Button(action: {
+                                        viewModel.initializeNode()
+                                    }) {
+                                        Text("🟣 Initialize your Celestia light node")
+                                    }.disabled(viewModel.isRunningNode)
+                                    Button(action: {
+                                        viewModel.startNode()
+                                    }) {
+                                        Text("🟢 Start your node")
+                                    }.disabled(viewModel.isRunningNode)
+                                }
+                                .padding(.vertical, 10)
+                                .frame(minWidth: 300, maxWidth: 400)
+                            }
+                            GroupBox {
+                                VStack {
+                                    Text("⚠️ Danger zone: irreversible").font(.title3)
+                                    Button(action: {
+                                        viewModel.deleteDataStore()
+                                    }) {
+                                        Text("🗑️ Delete your data store").italic()
+                                    }.disabled(viewModel.isRunningNode)
+                                    Button(action: {
+                                        viewModel.deleteKeyStore()
+                                    }) {
+                                        Text("🔐 Delete your key store").italic()
+                                    }.disabled(viewModel.isRunningNode)
+                                    Button(action: {
+                                        viewModel.deleteNodeStore()
+                                    }) {
+                                        Text("🔥 Delete entire node store").italic()
+                                    }.disabled(viewModel.isRunningNode)
+                                }
+                                .padding(.vertical, 10)
+                                .frame(minWidth: 300, maxWidth: 400)
+                            }
+                        }
+                            .padding()
+                            .frame(maxWidth: 300)
+                            .border(Color.gray, width: 300)
+                    }
+                    
+                    HStack {
+                        if viewModel.isRunningNode {
+                            GroupBox {
+                                VStack {
+                                    Text("👛 Wallet").font(.title2).padding(.vertical, 3)
+                                    GroupBox {
+                                        Text("⚖️ Account balance")
+                                            .font(.title3)
+                                            .padding(.bottom, 1)
+                                        VStack {
+                                            Text("\(balance, specifier: "%.6f") TIA").padding(.bottom, 2)
+                                        }
+                                        Button(action: {checkBalance()}) {
+                                            Text("🪙 Check your balance").font(.headline)
+                                        }.disabled(!viewModel.isRunningNode)}
+                                    GroupBox {
+                                        if let accountAddress = viewModel.accountAddress {
+                                            VStack {
+                                                Text("📢 Account address")
+                                                    .font(.title3).padding(.bottom, 1)
+                                                Text(accountAddress)
+                                                    .font(.footnote)
+                                                    .multilineTextAlignment(.center)
+                                                Button(action: {
+                                                    copyToClipboard(accountAddress)
+                                                }) {
+                                                    Text("📋 Copy to clipboard")
+                                                }
+                                            }
+                                        } else {
+                                            Text("Account Address: 🔄 fetching...")
+                                        }
+                                    }.padding(6)
+                                    Button(action: {
+                                            viewModel.stopCommand()
+                                        }) {
+                                            Text("🔴 Stop your node")
+                                    }
+                                }
+                            }
+                            .padding()
+                            .frame(minWidth: 300, maxWidth: 300)
+                            .border(Color.gray, width: 300)
+                            VStack {
+                                GroupBox {
+                                    Text("🕸️ Resources").font(.title2).padding(.vertical, 1)
+                                    GroupBox {
+                                        VStack {
+                                            Text("🚰 Faucet").font(.title2).padding(.vertical, 3)
+                                            Text("Visit the faucet to get funds")
+                                            Link("faucet-arabica-8.celestia-arabica.com", destination: URL(string: "https://faucet-arabica-8.celestia-arabica.com")!)
+                                        }
+                                    }
+                                    .padding(5)
+                                    .frame(minWidth: 280, maxWidth: 280)
+                                    .border(Color.gray, width: 280)
+                                    GroupBox {
+                                        VStack {
+                                            Text("🔎 Block explorer").font(.title2).padding(.vertical, 3)
+                                            Text("Visit the explorer to surf the chain")
+                                            Link("explorer-arabica-8.celestia-arabica.com", destination: URL(string: "https://explorer-arabica-8.celestia-arabica.com")!)
+                                        }
+                                    }
+                                    .padding(5)
+                                    .frame(minWidth: 280, maxWidth: 280)
+                                    .border(Color.gray, width: 280)
+                                }
+                            }
+                        }
+                    }
+            if !viewModel.isRunningNode {
+                GroupBox {
+                    HStack {
+                        Text("🟣 Learn more about Celestia")
+                            .font(.headline)
+                            .padding()
+                        Link("celestia.org/what-is-celestia", destination: URL(string: "https://celestia.org/what-is-celestia")!)
+                            .padding()
+                    }
+                }
+                GroupBox {
+                    HStack {
+                        Text("📖 Learn more about light nodes on Celestia's documentation")
+                            .font(.headline)
+                            .padding()
+                        Link("docs.celestia.org/nodes/light-node", destination: URL(string: "https://docs.celestia.org/nodes/light-node")!)
+                            .padding()
+                    }
+                }
+                GroupBox {
+                    HStack {
+                        Text("🧱 Learn more about modular blockchains")
+                            .font(.headline)
+                            .padding()
+                        Link("celestia.org/learn", destination: URL(string: "https://celestia.org/learn")!)
+                            .padding()
+                    }
+                }
+                GroupBox {
+                    HStack {
+                        Text("✨ Learn more about building whatever")
+                            .font(.headline)
+                            .padding()
+                        Link("docs.celestia.org/developers/build-modular/", destination: URL(string: "https://docs.celestia.org/developers/build-modular/")!)
+                            .padding()
+                    }
                 }
             }
         }
@@ -387,7 +614,61 @@ struct ContentView: View {
             case .alreadyInitializedAlert:
                 return Alert(
                     title: Text("✅ Initialization Complete"),
-                    message: Text("Your node is already initialized 🫡"),
+                    message: Text("Your node is already initialized 🫡 You can start your node."),
+                    dismissButton: .default(Text("OK"))
+                )
+            case .deletionSuccessAlert:
+                return Alert(
+                    title: Text("🗑️ Success"),
+                    message: Text("Data store deleted successfully."),
+                    dismissButton: .default(Text("OK"))
+                )
+            case .deletionErrorAlertErr:
+                return Alert(
+                    title: Text("❌ Error"),
+                    message: Text("Data store does not exist."),
+                    dismissButton: .default(Text("OK"))
+                )
+            case .deletionErrorAlert:
+                return Alert(
+                    title: Text("❓ Error"),
+                    message: Text("Data store not found."),
+                    dismissButton: .default(Text("OK"))
+                )
+            case .deletionKeySuccessAlert:
+                return Alert(
+                    title: Text("🗑️ Success"),
+                    message: Text("Key store deleted successfully."),
+                    dismissButton: .default(Text("OK"))
+                )
+            case .deletionKeyErrorAlertErr:
+                return Alert(
+                    title: Text("❌ Error"),
+                    message: Text("Key store does not exist."),
+                    dismissButton: .default(Text("OK"))
+                )
+            case .deletionKeyErrorAlert:
+                return Alert(
+                    title: Text("❓ Error"),
+                    message: Text("Key store not found."),
+                    dismissButton: .default(Text("OK"))
+                )
+            case .deletionDataSuccessAlert:
+                return Alert(
+                    title: Text("🗑️ Success"),
+                    message: Text("Node store deleted successfully."),
+                    dismissButton: .default(Text("OK"))
+                )
+            case .deletionDataErrorAlertErr:
+                return Alert(
+                    title: Text("❌ Error"),
+                    message: Text("Node store does not exist."),
+                    dismissButton: .default(Text("OK"))
+                )
+            case .deletionDataErrorAlert:
+                return Alert(
+                    title: Text("❓ Error"),
+                    message: Text("Node store not found."),
                     dismissButton: .default(Text("OK"))
                 )
             }
@@ -410,8 +691,8 @@ struct ContentView: View {
             if let output = String(data: data, encoding: .utf8) {
                 do {
                     if let dict = try JSONSerialization.jsonObject(with: Data(output.utf8), options: []) as? [String: Any],
-                       let amountStr = dict["amount"] as? String,
-                       let amountDouble = Double(amountStr) {
+                        let amountStr = dict["amount"] as? String,
+                        let amountDouble = Double(amountStr) {
                         DispatchQueue.main.async {
                             self.balance = amountDouble * pow(10, -6)
                         }
