@@ -40,6 +40,10 @@ Then, drag the "quasar" icon to the "Applications" folder.
 
 <img width="912" alt="Screenshot 2023-06-07 at 1 03 06 AM" src="https://github.com/jcstein/node-app/assets/46639943/d5eee61f-bdbc-43da-85c0-b1b15b1af97b">
 
+### Video tutorial 📺
+
+You can view the latest video tutorial [here](https://twitter.com/JoshCStein/status/1666328587400630272?s=20).
+
 ### Troubleshooting 🛠️
 
 If you encounter a warning when you open the app, you will need to go to your
