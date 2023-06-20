@@ -49,6 +49,8 @@ You can view the latest video tutorial [here](https://twitter.com/JoshCStein/sta
 If you encounter a warning when you open the app, you will need to go to your
 System Preferences > Privacy & Security > Security and select "App Store and identified developers".
 
+<img width="827" alt="Screenshot 2023-06-20 at 4 07 52 PM" src="https://github.com/jcstein/node-app/assets/46639943/4027fcb2-fad2-436a-a051-9cca6f5b9742">
+
 ## Prerequisites 🧱
 
 The current version requires:
