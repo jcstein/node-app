@@ -1,6 +1,6 @@
 # quasar ✨ a Celestia light node macOS app
 
-Introducing quasar ✨ [v0.1.6-alpha](https://github.com/jcstein/node-app/releases/tag/quasar_v0.1.6-alpha_CN-v0.11.0-rc2_Arabica),
+Introducing quasar ✨ [v0.1.7-alpha](https://github.com/jcstein/node-app/releases/tag/quasar_v0.1.7-alpha_CN-v0.11.0-rc2_Arabica),
 a [Celestia light node](https://docs.celestia.org/nodes/light-node/) macOS app, written in Swift.
 
 A quasar (quasi-stellar object) is a very luminous object in space,
@@ -8,7 +8,7 @@ powered by an active galactic nucleus (a light node).
 
 ## Features ⚙️
 
-v0.1.6 of this app runs on the [Arabica devnet](https://docs.celestia.org/nodes/arabica-devnet/) and has the following functions:
+v0.1.7 of this app runs on the [Arabica devnet](https://docs.celestia.org/nodes/arabica-devnet/) and has the following functions:
 
 * `🟣 Initialize your Celestia light node`: this initializes a Celestia light node in the application's local storage
 * `🟢 Start your node`: this starts the light node
@@ -48,11 +48,6 @@ You can view the latest video tutorial [here](https://twitter.com/JoshCStein/sta
 
 If you encounter a warning when you open the app, you will need to go to your
 System Preferences > Privacy & Security > Security and select "App Store and identified developers".
-
-Click "Open Anyway" next in the box that says `"quasar" was blocked from use because it is not from an identified developer."` I have an application for
-an Apple Developer account and am waiting on it to be approved. 🫡
-
-<img width="726" alt="Screenshot 2023-06-04 at 12 26 59 AM" src="https://github.com/jcstein/node-app/assets/46639943/db505d6b-37c9-4757-8eed-4b03fdd53a99">
 
 ## Prerequisites 🧱
 
