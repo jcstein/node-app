@@ -501,7 +501,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"quasar/Preview Content\"";
 				DEVELOPMENT_TEAM = DZ7874M2VD;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -513,7 +513,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = v0.1.7;
+				MARKETING_VERSION = v0.1.8;
 				PRODUCT_BUNDLE_IDENTIFIER = org.joshcs.quasar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -532,7 +532,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"quasar/Preview Content\"";
 				DEVELOPMENT_TEAM = DZ7874M2VD;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -544,7 +544,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = v0.1.7;
+				MARKETING_VERSION = v0.1.8;
 				PRODUCT_BUNDLE_IDENTIFIER = org.joshcs.quasar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
