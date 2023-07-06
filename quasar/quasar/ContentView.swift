@@ -100,7 +100,7 @@ class ContentViewViewModel: ObservableObject {
     }
     
     func startNode() {
-        let command = "cd \(Bundle.main.resourcePath!); ./celestia light start --core.ip consensus-full-arabica-8.celestia-arabica.com --gateway.deprecated-endpoints --gateway --gateway.addr 127.0.0.1 --gateway.port 26659 --p2p.network arabica"
+        let command = "cd \(Bundle.main.resourcePath!); ./celestia light start --core.ip consensus-full-arabica-9.celestia-arabica.com --gateway.deprecated-endpoints --gateway --gateway.addr 127.0.0.1 --gateway.port 26659 --p2p.network arabica"
         
         let task = Process()
         task.launchPath = "/usr/bin/env"
@@ -284,7 +284,7 @@ class ContentViewViewModel: ObservableObject {
 
     func deleteDataStore() {
         let fileManager = FileManager.default
-        let url = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "org.joshcs.quasar")?.appendingPathComponent(".celestia-light-arabica-8/data")
+        let url = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "org.joshcs.quasar")?.appendingPathComponent(".celestia-light-arabica-9/data")
         
         guard let path = url?.path else {
             print("❌ Invalid path")
@@ -316,7 +316,7 @@ class ContentViewViewModel: ObservableObject {
     
     func deleteKeyStore() {
         let fileManager = FileManager.default
-        let url = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "org.joshcs.quasar")?.appendingPathComponent(".celestia-light-arabica-8/keys")
+        let url = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "org.joshcs.quasar")?.appendingPathComponent(".celestia-light-arabica-9/keys")
         
         guard let path = url?.path else {
             print("❌ Invalid path")
@@ -348,7 +348,7 @@ class ContentViewViewModel: ObservableObject {
     
     func deleteNodeStore() {
         let fileManager = FileManager.default
-        let url = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "org.joshcs.quasar")?.appendingPathComponent(".celestia-light-arabica-8")
+        let url = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "org.joshcs.quasar")?.appendingPathComponent(".celestia-light-arabica-9")
         
         guard let path = url?.path else {
             print("❌ Invalid path")
@@ -566,7 +566,7 @@ struct ContentView: View {
                                         VStack {
                                             Text("🚰 Faucet").font(.title2).padding(.vertical, 3)
                                             Text("Visit the faucet to get funds")
-                                            Link("faucet-arabica-8.celestia-arabica.com", destination: URL(string: "https://faucet-arabica-8.celestia-arabica.com")!)
+                                            Link("faucet-arabica-9.celestia-arabica.com", destination: URL(string: "https://faucet-arabica-9.celestia-arabica.com")!)
                                         }
                                     }
                                     .padding(5)
@@ -576,7 +576,7 @@ struct ContentView: View {
                                         VStack {
                                             Text("🔎 Block explorer").font(.title2).padding(.vertical, 3)
                                             Text("Visit the explorer to surf the chain")
-                                            Link("explorer-arabica-8.celestia-arabica.com", destination: URL(string: "https://explorer-arabica-8.celestia-arabica.com")!)
+                                            Link("explorer-arabica-9.celestia-arabica.com", destination: URL(string: "https://explorer-arabica-9.celestia-arabica.com")!)
                                         }
                                     }
                                     .padding(5)
