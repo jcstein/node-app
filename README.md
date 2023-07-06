@@ -1,6 +1,6 @@
 # quasar ✨ a Celestia light node macOS app
 
-Introducing quasar ✨ [v0.1.8-alpha](https://github.com/jcstein/node-app/releases/tag/quasar_v0.1.8-alpha_CN-v0.11.0-rc7_Arabica),
+Introducing quasar ✨ [v0.2.0-alpha](https://github.com/jcstein/node-app/releases/tag/quasar_v0.2.0-alpha_CN-v0.11.0-rc7_Arabica),
 a [Celestia light node](https://docs.celestia.org/nodes/light-node/) macOS app, written in Swift.
 
 A quasar (quasi-stellar object) is a very luminous object in space,
@@ -8,7 +8,7 @@ powered by an active galactic nucleus (a light node).
 
 ## Features ⚙️
 
-v0.1.8-alpha of this app runs on the [Arabica devnet](https://docs.celestia.org/nodes/arabica-devnet/) and has the following functions:
+v0.2.0-alpha of this app runs on the [Arabica devnet](https://docs.celestia.org/nodes/arabica-devnet/) (chain ID `arabica-9`) and has the following functions:
 
 * `🟣 Initialize your Celestia light node`: this initializes a Celestia light node in the application's local storage
 * `🟢 Start your node`: this starts the light node
