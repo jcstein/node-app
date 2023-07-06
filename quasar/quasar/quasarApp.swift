@@ -14,14 +14,22 @@ struct node_appApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .frame(minWidth: 800, minHeight: 733)
         }
     }
 }
 
-class AppDelegate: NSObject, NSApplicationDelegate {
+class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
+    var window: NSWindow?
+
     func applicationDidFinishLaunching(_ notification: Notification) {
         if let window = NSApplication.shared.windows.first {
             window.setContentSize(NSSize(width: 800, height: 733))
+            self.window = window
         }
+    }
+    
+    func applicationWillBecomeActive(_ notification: Notification) {
+        self.window?.setContentSize(NSSize(width: 800, height: 733))
     }
 }
