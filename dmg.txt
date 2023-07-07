@@ -1,0 +1,11 @@
+create-dmg \
+--volname "Quasar" \
+--background "$HOME/DEV/node-app/background.png" \
+--window-pos 200 120 \
+--window-size 800 400 \
+--icon-size 100 \
+--icon "quasar.app" 200 190 \
+--hide-extension "quasar.app" \
+--app-drop-link 600 185 \
+"DEV/node-app/node-dmgs/quasar_v0.2.0-alpha/quasar.dmg" \
+"DEV/node-app/node-dmgs/quasar_v0.2.0-alpha/quasar.app"
