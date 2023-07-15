@@ -1,0 +1,28 @@
+{
+   "-- getting started --": {
+    "type": "separator",
+    "title": "getting started"
+  },
+  "index": {
+    "title": "quasar",
+    "type": "page",
+    "display": "hidden"
+  },
+  "intro": "introduction ✨",
+  "installation": "installation 📦",
+  "video-tutorial": {
+    "title": "video tutorial 📺 ↗",
+    "type": "page",
+    "href": "https://twitter.com/JoshCStein/status/1666328587400630272?s=20",
+    "newWindow": true
+  },
+   "---": {
+    "type": "separator"
+  },
+  "-- information --": {
+    "type": "separator",
+    "title": "information"
+  },
+  "faqs": "faqs",
+  "demo": "nextra demo page"
+}

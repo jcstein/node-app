@@ -1,0 +1,248 @@
+---
+title: quasar
+---
+
+import createGlobe from "cobe";
+import { useEffect, useRef } from "react";
+import { useSpring } from "react-spring";
+import Text from '../components/text'
+ 
+export function Cobe() {
+  const canvasRef = useRef();
+  const pointerInteracting = useRef(null);
+  const pointerInteractionMovement = useRef(0);
+  const [{ r }, api] = useSpring(() => ({
+    r: 0,
+    config: {
+      mass: 1,
+      tension: 280,
+      friction: 40,
+      precision: 0.001,
+    },
+  }));
+  useEffect(() => {
+    let phi = 0;
+    let width = 0;
+    const onResize = () => canvasRef.current && (width = canvasRef.current.offsetWidth)
+    window.addEventListener('resize', onResize)
+    onResize()
+    const globe = createGlobe(canvasRef.current, {
+      devicePixelRatio: 2,
+      width: width * 2,
+      height: width * 2,
+      phi: 1.32,
+      theta: 0.25,
+      dark: 1.00,
+      diffuse: 0.69,
+      mapSamples: 42000,
+      mapBrightness: 0.42,
+      mapBaseBrightness: 0.21,
+      baseColor: [255 / 255, 255 / 255, 255 / 255],
+      markerColor: [255 / 255, 255 / 255, 255 / 255],
+      glowColor: [0, 255 / 255, 0],
+      markers: [],
+      markerSize: 0.05,
+      scale: 1,
+      opacity: 1,
+      onRender: (state) => {
+        // This prevents rotation while dragging
+        if (!pointerInteracting.current) {
+          // Called on every animation frame.
+          // `state` will be an empty object, return updated params.
+          phi += 0.005
+        } 
+        state.phi = phi + r.get()
+        state.width = width * 2
+        state.height = width * 2
+      }
+    })
+    setTimeout(() => canvasRef.current.style.opacity = '1')
+    return () => globe.destroy()
+
+}, []);
+return (
+
+<div
+  className="canvas-container"
+  style={{
+    width: "100%",
+    maxWidth: 600,
+    aspectRatio: 1,
+    marginRight: "auto",
+    marginLeft: "auto",
+    position: "relative",
+  }}
+>
+  <div
+    style={{
+      width: "100%",
+      fontWeight: 900,
+      top: "50%",
+      transform: "translateY(-50%)",
+      zIndex: 1,
+      textAlign: "center",
+      color: "#ffffff",
+      pointerEvents: "none",
+      userSelect: "none",
+      position: "absolute",
+      mixBlendMode: "screen",
+    }}
+  >
+    <h1
+      style={{
+        fontSize: "min(9vw,3.2em)",
+        letterSpacing: ".2em",
+        textIndent: ".2em",
+        margin: "auto",
+        opacity: 1,
+        zIndex: -1,
+      }}
+      className="title"
+    >
+      quasar
+    </h1>
+    <span style={{ fontSize: "1.3em", zIndex: -1 }}>
+      <Text />
+    </span>
+  </div>
+  <canvas
+    ref={canvasRef}
+    onPointerDown={(e) => {
+      pointerInteracting.current =
+        e.clientX - pointerInteractionMovement.current;
+      canvasRef.current.style.cursor = "grabbing";
+    }}
+    onPointerUp={() => {
+      pointerInteracting.current = null;
+      canvasRef.current.style.cursor = "grab";
+    }}
+    onPointerOut={() => {
+      pointerInteracting.current = null;
+      canvasRef.current.style.cursor = "grab";
+    }}
+    onMouseMove={(e) => {
+      if (pointerInteracting.current !== null) {
+        const delta = e.clientX - pointerInteracting.current;
+        pointerInteractionMovement.current = delta;
+        api.start({
+          r: delta / 200,
+        });
+      }
+    }}
+    onTouchMove={(e) => {
+      if (pointerInteracting.current !== null && e.touches[0]) {
+        const delta = e.touches[0].clientX - pointerInteracting.current;
+        pointerInteractionMovement.current = delta;
+        api.start({
+          r: delta / 100,
+        });
+      }
+    }}
+    style={{
+      width: "100%",
+      height: "100%",
+    }}
+  />
+</div>
+); }
+
+<Cobe />
+
+import Link from "next/link";
+
+<div style={{ textAlign: "center" }}>
+  <div className="cta-container">
+     <Link href="/intro" className="cta">
+      celestia light start
+    </Link>
+    <Link className="cta" href="https://www.github.com/jcstein/node-app">
+      github
+    </Link>
+  </div>
+</div>
+
+<style jsx global>{`
+  @media only screen and (min-width: 600px) {
+    .canvas-container {
+      margin-top: 0px;
+    }
+  }
+  @media only screen and (min-width: 900px) {
+    .canvas-container {
+      margin-top: calc(50vh - 50%);
+    }
+  }
+  @media only screen and (min-width: 1200px) {
+    .canvas-container {
+      margin-top: calc(50vh - 50%);
+    }
+  }
+  @media only screen and (min-width: 1536px) {
+    .canvas-container {
+      margin-top: calc(50vh - 50%);
+    }
+  }
+  .nav {
+    display: none;
+  }
+  .nextra-nav-container {
+    display: none;
+  }
+  footer {
+    display: none;
+  }
+  body {
+    background: linear-gradient(
+      180deg,
+      hsla(0, 0%, 100%, 0) 0,
+      #fff min(110vw, 800px)
+    ),
+  }
+  .dark body {
+    background: linear-gradient(to bottom, #000000 0%, #000000 100%);
+    fixed repeating-radial-gradient(circle at 50% min(calc(50vw + 3.5rem), calc(300px + 5rem)), #050505 0, #000 40px, transparent 50px);
+  }
+  .cta {
+  color: #333;
+  font-size: 1.2rem;
+  font-weight: 700;
+  padding: 0.4rem 1rem;
+  border-radius: 7px;
+  text-decoration: none;
+  user-select: none;
+  box-shadow: 0 5px 50px rgba(0, 0, 0, 0);
+  transition: all 0.4s ease;
+  outline: none !important;
+  }
+  .cta-container {
+  display: inline-flex;
+  justify-content: center;
+  }
+  .cta-container:hover .cta {
+    color: #999;
+  }
+  .cta-container .cta:hover {
+    color: #000;
+    box-shadow: 0 0 0 #efefef, 0 0 100px #efefef inset;
+    outline: none;
+  }
+  .cta-container .cta:active {
+    color: #000;
+    box-shadow: 0 0 0 #efefef, 0 0 100px #ddd inset;
+    outline: none;
+  }
+  .dark .cta {
+  color: #ccc;
+  }
+  .dark .cta-container:hover .cta {
+    color: #777;
+  }
+  .dark .cta-container .cta:hover {
+    color: #fff;
+    box-shadow: 0 0 0 #333, 0 0 100px #333 inset;
+  }
+  .dark .cta-container .cta:active {
+    color: #fff;
+    box-shadow: 0 0 0 #333, 0 0 100px #444 inset;
+  }
+`}</style>
