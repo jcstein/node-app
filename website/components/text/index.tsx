@@ -5,6 +5,7 @@ import TextTransition, { presets } from "react-text-transition";
 const TEXTS = [
     "boats",
     "trains",
+    "bikes",
     "planes",
     "whatever",
 ];
