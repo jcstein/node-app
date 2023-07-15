@@ -23,6 +23,9 @@
     "type": "separator",
     "title": "information"
   },
-  "faqs": "faqs",
+  "faqs": "faqs 🤷‍♀️",
+  "----": {
+    "type": "separator"
+  },
   "demo": "nextra demo page"
 }
