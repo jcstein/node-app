@@ -614,15 +614,6 @@ struct ContentView: View {
                             .padding()
                     }
                 }
-                GroupBox {
-                    HStack {
-                        Text("✨ Learn more about building whatever")
-                            .font(.headline)
-                            .padding()
-                        Link("docs.celestia.org/developers/build-modular/", destination: URL(string: "https://docs.celestia.org/developers/build-modular/")!)
-                            .padding()
-                    }
-                }
             }
         }
         .alert(item: $viewModel.alertType) { alertType in

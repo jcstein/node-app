@@ -48,6 +48,7 @@
 		48B563232A2C552C00D3D5D7 /* quasarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = quasarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		48B563252A2C552C00D3D5D7 /* quasarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = quasarTests.swift; sourceTree = "<group>"; };
 		48BC07E52A29727100577849 /* quasar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = quasar.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		48D2A0FE2A69F6BF00AF51EF /* quasarDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = quasarDebug.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +79,7 @@
 		48B562E62A2C53AD00D3D5D7 /* quasar */ = {
 			isa = PBXGroup;
 			children = (
+				48D2A0FE2A69F6BF00AF51EF /* quasarDebug.entitlements */,
 				48B562E72A2C53AD00D3D5D7 /* quasarApp.swift */,
 				48B562E82A2C53AD00D3D5D7 /* Assets.xcassets */,
 				48B562E92A2C53AD00D3D5D7 /* Preview Content */,
@@ -497,11 +499,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
-				CODE_SIGN_ENTITLEMENTS = quasar/quasar.entitlements;
+				CODE_SIGN_ENTITLEMENTS = quasar/quasarDebug.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"quasar/Preview Content\"";
 				DEVELOPMENT_TEAM = DZ7874M2VD;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -532,7 +534,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"quasar/Preview Content\"";
 				DEVELOPMENT_TEAM = DZ7874M2VD;
 				ENABLE_HARDENED_RUNTIME = YES;
