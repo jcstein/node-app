@@ -17,7 +17,7 @@ const config: DocsThemeConfig = {
   project: {
     link: 'https://github.com/jcstein/node-app',
   },
-  docsRepositoryBase: 'https://github.com/jcstein/node-app',
+  docsRepositoryBase: 'https://github.com/jcstein/node-app/tree/main/website',
   useNextSeoProps() {
     const { route } = useRouter()
     if (route !== '/') {
