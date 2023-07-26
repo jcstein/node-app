@@ -1,13 +1,13 @@
 //
-//  quasarTests.swift
-//  quasarTests
+//  quazarTests.swift
+//  quazarTests
 //
 //  Created by Josh Stein on 6/4/23.
 //
 
 import XCTest
 
-final class quasarTests: XCTestCase {
+final class quazarTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

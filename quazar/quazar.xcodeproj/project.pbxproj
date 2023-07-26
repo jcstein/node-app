@@ -7,14 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		48B562F62A2C53AD00D3D5D7 /* quasarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B562E72A2C53AD00D3D5D7 /* quasarApp.swift */; };
+		48B562F62A2C53AD00D3D5D7 /* quazarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B562E72A2C53AD00D3D5D7 /* quazarApp.swift */; };
 		48B562F72A2C53AD00D3D5D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48B562E82A2C53AD00D3D5D7 /* Assets.xcassets */; };
 		48B562F82A2C53AD00D3D5D7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48B562EA2A2C53AD00D3D5D7 /* Preview Assets.xcassets */; };
 		48B562F92A2C53AD00D3D5D7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B562EB2A2C53AD00D3D5D7 /* ContentView.swift */; };
 		48B562FA2A2C53AD00D3D5D7 /* celestia in Resources */ = {isa = PBXBuildFile; fileRef = 48B562ED2A2C53AD00D3D5D7 /* celestia */; };
-		48B563172A2C552300D3D5D7 /* quasarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B563162A2C552300D3D5D7 /* quasarUITests.swift */; };
-		48B563192A2C552300D3D5D7 /* quasarUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B563182A2C552300D3D5D7 /* quasarUITestsLaunchTests.swift */; };
-		48B563262A2C552C00D3D5D7 /* quasarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B563252A2C552C00D3D5D7 /* quasarTests.swift */; };
+		48B563172A2C552300D3D5D7 /* quazarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B563162A2C552300D3D5D7 /* quazarUITests.swift */; };
+		48B563192A2C552300D3D5D7 /* quazarUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B563182A2C552300D3D5D7 /* quazarUITestsLaunchTests.swift */; };
+		48B563262A2C552C00D3D5D7 /* quazarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B563252A2C552C00D3D5D7 /* quazarTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,20 +35,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		48B562E72A2C53AD00D3D5D7 /* quasarApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = quasarApp.swift; sourceTree = "<group>"; };
+		48B562E72A2C53AD00D3D5D7 /* quazarApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = quazarApp.swift; sourceTree = "<group>"; };
 		48B562E82A2C53AD00D3D5D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		48B562EA2A2C53AD00D3D5D7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		48B562EB2A2C53AD00D3D5D7 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		48B562EC2A2C53AD00D3D5D7 /* quasar.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = quasar.entitlements; sourceTree = "<group>"; };
+		48B562EC2A2C53AD00D3D5D7 /* quazar.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = quazar.entitlements; sourceTree = "<group>"; };
 		48B562ED2A2C53AD00D3D5D7 /* celestia */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = celestia; sourceTree = "<group>"; };
 		48B5630E2A2C54C700D3D5D7 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		48B563142A2C552200D3D5D7 /* quasarUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = quasarUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		48B563162A2C552300D3D5D7 /* quasarUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = quasarUITests.swift; sourceTree = "<group>"; };
-		48B563182A2C552300D3D5D7 /* quasarUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = quasarUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		48B563232A2C552C00D3D5D7 /* quasarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = quasarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		48B563252A2C552C00D3D5D7 /* quasarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = quasarTests.swift; sourceTree = "<group>"; };
-		48BC07E52A29727100577849 /* quasar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = quasar.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		48D2A0FE2A69F6BF00AF51EF /* quasarDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = quasarDebug.entitlements; sourceTree = "<group>"; };
+		48B563142A2C552200D3D5D7 /* quazarUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = quazarUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		48B563162A2C552300D3D5D7 /* quazarUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = quazarUITests.swift; sourceTree = "<group>"; };
+		48B563182A2C552300D3D5D7 /* quazarUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = quazarUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		48B563232A2C552C00D3D5D7 /* quazarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = quazarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		48B563252A2C552C00D3D5D7 /* quazarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = quazarTests.swift; sourceTree = "<group>"; };
+		48BC07E52A29727100577849 /* quazar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = quazar.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		48D2A0FE2A69F6BF00AF51EF /* quazarDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = quazarDebug.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,17 +76,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		48B562E62A2C53AD00D3D5D7 /* quasar */ = {
+		48B562E62A2C53AD00D3D5D7 /* quazar */ = {
 			isa = PBXGroup;
 			children = (
-				48D2A0FE2A69F6BF00AF51EF /* quasarDebug.entitlements */,
-				48B562E72A2C53AD00D3D5D7 /* quasarApp.swift */,
+				48D2A0FE2A69F6BF00AF51EF /* quazarDebug.entitlements */,
+				48B562E72A2C53AD00D3D5D7 /* quazarApp.swift */,
 				48B562E82A2C53AD00D3D5D7 /* Assets.xcassets */,
 				48B562E92A2C53AD00D3D5D7 /* Preview Content */,
 				48B562EB2A2C53AD00D3D5D7 /* ContentView.swift */,
-				48B562EC2A2C53AD00D3D5D7 /* quasar.entitlements */,
+				48B562EC2A2C53AD00D3D5D7 /* quazar.entitlements */,
 			);
-			path = quasar;
+			path = quazar;
 			sourceTree = "<group>";
 		};
 		48B562E92A2C53AD00D3D5D7 /* Preview Content */ = {
@@ -105,30 +105,30 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		48B563152A2C552300D3D5D7 /* quasarUITests */ = {
+		48B563152A2C552300D3D5D7 /* quazarUITests */ = {
 			isa = PBXGroup;
 			children = (
-				48B563162A2C552300D3D5D7 /* quasarUITests.swift */,
-				48B563182A2C552300D3D5D7 /* quasarUITestsLaunchTests.swift */,
+				48B563162A2C552300D3D5D7 /* quazarUITests.swift */,
+				48B563182A2C552300D3D5D7 /* quazarUITestsLaunchTests.swift */,
 			);
-			path = quasarUITests;
+			path = quazarUITests;
 			sourceTree = "<group>";
 		};
-		48B563242A2C552C00D3D5D7 /* quasarTests */ = {
+		48B563242A2C552C00D3D5D7 /* quazarTests */ = {
 			isa = PBXGroup;
 			children = (
-				48B563252A2C552C00D3D5D7 /* quasarTests.swift */,
+				48B563252A2C552C00D3D5D7 /* quazarTests.swift */,
 			);
-			path = quasarTests;
+			path = quazarTests;
 			sourceTree = "<group>";
 		};
 		48BC07DC2A29727100577849 = {
 			isa = PBXGroup;
 			children = (
 				48B562ED2A2C53AD00D3D5D7 /* celestia */,
-				48B562E62A2C53AD00D3D5D7 /* quasar */,
-				48B563152A2C552300D3D5D7 /* quasarUITests */,
-				48B563242A2C552C00D3D5D7 /* quasarTests */,
+				48B562E62A2C53AD00D3D5D7 /* quazar */,
+				48B563152A2C552300D3D5D7 /* quazarUITests */,
+				48B563242A2C552C00D3D5D7 /* quazarTests */,
 				48BC07E62A29727100577849 /* Products */,
 				48B5630D2A2C54C700D3D5D7 /* Frameworks */,
 			);
@@ -137,9 +137,9 @@
 		48BC07E62A29727100577849 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				48BC07E52A29727100577849 /* quasar.app */,
-				48B563142A2C552200D3D5D7 /* quasarUITests.xctest */,
-				48B563232A2C552C00D3D5D7 /* quasarTests.xctest */,
+				48BC07E52A29727100577849 /* quazar.app */,
+				48B563142A2C552200D3D5D7 /* quazarUITests.xctest */,
+				48B563232A2C552C00D3D5D7 /* quazarTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -147,9 +147,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		48B563132A2C552200D3D5D7 /* quasarUITests */ = {
+		48B563132A2C552200D3D5D7 /* quazarUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 48B5631C2A2C552300D3D5D7 /* Build configuration list for PBXNativeTarget "quasarUITests" */;
+			buildConfigurationList = 48B5631C2A2C552300D3D5D7 /* Build configuration list for PBXNativeTarget "quazarUITests" */;
 			buildPhases = (
 				48B563102A2C552200D3D5D7 /* Sources */,
 				48B563112A2C552200D3D5D7 /* Frameworks */,
@@ -160,14 +160,14 @@
 			dependencies = (
 				48B5631B2A2C552300D3D5D7 /* PBXTargetDependency */,
 			);
-			name = quasarUITests;
+			name = quazarUITests;
 			productName = quasarUITests;
-			productReference = 48B563142A2C552200D3D5D7 /* quasarUITests.xctest */;
+			productReference = 48B563142A2C552200D3D5D7 /* quazarUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
-		48B563222A2C552C00D3D5D7 /* quasarTests */ = {
+		48B563222A2C552C00D3D5D7 /* quazarTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 48B563292A2C552C00D3D5D7 /* Build configuration list for PBXNativeTarget "quasarTests" */;
+			buildConfigurationList = 48B563292A2C552C00D3D5D7 /* Build configuration list for PBXNativeTarget "quazarTests" */;
 			buildPhases = (
 				48B5631F2A2C552C00D3D5D7 /* Sources */,
 				48B563202A2C552C00D3D5D7 /* Frameworks */,
@@ -178,14 +178,14 @@
 			dependencies = (
 				48B563282A2C552C00D3D5D7 /* PBXTargetDependency */,
 			);
-			name = quasarTests;
+			name = quazarTests;
 			productName = quasarTests;
-			productReference = 48B563232A2C552C00D3D5D7 /* quasarTests.xctest */;
+			productReference = 48B563232A2C552C00D3D5D7 /* quazarTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		48BC07E42A29727100577849 /* quasar */ = {
+		48BC07E42A29727100577849 /* quazar */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 48BC080A2A29727200577849 /* Build configuration list for PBXNativeTarget "quasar" */;
+			buildConfigurationList = 48BC080A2A29727200577849 /* Build configuration list for PBXNativeTarget "quazar" */;
 			buildPhases = (
 				48BC07E12A29727100577849 /* Sources */,
 				48BC07E22A29727100577849 /* Frameworks */,
@@ -195,9 +195,9 @@
 			);
 			dependencies = (
 			);
-			name = quasar;
+			name = quazar;
 			productName = "node-app";
-			productReference = 48BC07E52A29727100577849 /* quasar.app */;
+			productReference = 48BC07E52A29727100577849 /* quazar.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -223,7 +223,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 48BC07E02A29727100577849 /* Build configuration list for PBXProject "quasar" */;
+			buildConfigurationList = 48BC07E02A29727100577849 /* Build configuration list for PBXProject "quazar" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -236,9 +236,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				48BC07E42A29727100577849 /* quasar */,
-				48B563132A2C552200D3D5D7 /* quasarUITests */,
-				48B563222A2C552C00D3D5D7 /* quasarTests */,
+				48BC07E42A29727100577849 /* quazar */,
+				48B563132A2C552200D3D5D7 /* quazarUITests */,
+				48B563222A2C552C00D3D5D7 /* quazarTests */,
 			);
 		};
 /* End PBXProject section */
@@ -275,8 +275,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				48B563172A2C552300D3D5D7 /* quasarUITests.swift in Sources */,
-				48B563192A2C552300D3D5D7 /* quasarUITestsLaunchTests.swift in Sources */,
+				48B563172A2C552300D3D5D7 /* quazarUITests.swift in Sources */,
+				48B563192A2C552300D3D5D7 /* quazarUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,7 +284,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				48B563262A2C552C00D3D5D7 /* quasarTests.swift in Sources */,
+				48B563262A2C552C00D3D5D7 /* quazarTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,7 +293,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				48B562F92A2C53AD00D3D5D7 /* ContentView.swift in Sources */,
-				48B562F62A2C53AD00D3D5D7 /* quasarApp.swift in Sources */,
+				48B562F62A2C53AD00D3D5D7 /* quazarApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,12 +302,12 @@
 /* Begin PBXTargetDependency section */
 		48B5631B2A2C552300D3D5D7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 48BC07E42A29727100577849 /* quasar */;
+			target = 48BC07E42A29727100577849 /* quazar */;
 			targetProxy = 48B5631A2A2C552300D3D5D7 /* PBXContainerItemProxy */;
 		};
 		48B563282A2C552C00D3D5D7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 48BC07E42A29727100577849 /* quasar */;
+			target = 48BC07E42A29727100577849 /* quazar */;
 			targetProxy = 48B563272A2C552C00D3D5D7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -321,11 +321,11 @@
 				DEVELOPMENT_TEAM = DZ7874M2VD;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = org.celestia.quasarUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = org.joshcs.quazarUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = quasar;
+				TEST_TARGET_NAME = quazar;
 			};
 			name = Debug;
 		};
@@ -337,11 +337,11 @@
 				DEVELOPMENT_TEAM = DZ7874M2VD;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = org.celestia.quasarUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = org.joshcs.quazarUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = quasar;
+				TEST_TARGET_NAME = quazar;
 			};
 			name = Release;
 		};
@@ -354,11 +354,11 @@
 				DEVELOPMENT_TEAM = DZ7874M2VD;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = org.celestia.quasarTests;
+				PRODUCT_BUNDLE_IDENTIFIER = org.joshcs.quazarTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/quasar.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/quasar";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/quazar.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/quazar";
 			};
 			name = Debug;
 		};
@@ -371,11 +371,11 @@
 				DEVELOPMENT_TEAM = DZ7874M2VD;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = org.celestia.quasarTests;
+				PRODUCT_BUNDLE_IDENTIFIER = org.joshcs.quazarTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/quasar.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/quasar";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/quazar.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/quazar";
 			};
 			name = Release;
 		};
@@ -499,24 +499,24 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
-				CODE_SIGN_ENTITLEMENTS = quasar/quasarDebug.entitlements;
+				CODE_SIGN_ENTITLEMENTS = quazar/quazarDebug.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 5;
-				DEVELOPMENT_ASSET_PATHS = "\"quasar/Preview Content\"";
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_ASSET_PATHS = "\"quazar/Preview Content\"";
 				DEVELOPMENT_TEAM = DZ7874M2VD;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "quasar ✨";
+				INFOPLIST_KEY_CFBundleDisplayName = quazar;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = v0.2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = org.joshcs.quasar;
+				MARKETING_VERSION = v0.2.1;
+				PRODUCT_BUNDLE_IDENTIFIER = org.joshcs.quazar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -530,24 +530,24 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
-				CODE_SIGN_ENTITLEMENTS = quasar/quasar.entitlements;
+				CODE_SIGN_ENTITLEMENTS = quazar/quazar.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 5;
-				DEVELOPMENT_ASSET_PATHS = "\"quasar/Preview Content\"";
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_ASSET_PATHS = "\"quazar/Preview Content\"";
 				DEVELOPMENT_TEAM = DZ7874M2VD;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "quasar ✨";
+				INFOPLIST_KEY_CFBundleDisplayName = quazar;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = v0.2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = org.joshcs.quasar;
+				MARKETING_VERSION = v0.2.1;
+				PRODUCT_BUNDLE_IDENTIFIER = org.joshcs.quazar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -557,7 +557,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		48B5631C2A2C552300D3D5D7 /* Build configuration list for PBXNativeTarget "quasarUITests" */ = {
+		48B5631C2A2C552300D3D5D7 /* Build configuration list for PBXNativeTarget "quazarUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				48B5631D2A2C552300D3D5D7 /* Debug */,
@@ -566,7 +566,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		48B563292A2C552C00D3D5D7 /* Build configuration list for PBXNativeTarget "quasarTests" */ = {
+		48B563292A2C552C00D3D5D7 /* Build configuration list for PBXNativeTarget "quazarTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				48B5632A2A2C552C00D3D5D7 /* Debug */,
@@ -575,7 +575,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		48BC07E02A29727100577849 /* Build configuration list for PBXProject "quasar" */ = {
+		48BC07E02A29727100577849 /* Build configuration list for PBXProject "quazar" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				48BC08082A29727200577849 /* Debug */,
@@ -584,7 +584,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		48BC080A2A29727200577849 /* Build configuration list for PBXNativeTarget "quasar" */ = {
+		48BC080A2A29727200577849 /* Build configuration list for PBXNativeTarget "quazar" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				48BC080B2A29727200577849 /* Debug */,

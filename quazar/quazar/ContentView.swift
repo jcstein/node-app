@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  quasar
+//  quazar
 //
 //  Created by Josh Stein on 6/1/23.
 //
@@ -284,7 +284,7 @@ class ContentViewViewModel: ObservableObject {
 
     func deleteDataStore() {
         let fileManager = FileManager.default
-        let url = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "org.joshcs.quasar")?.appendingPathComponent(".celestia-light-arabica-9/data")
+        let url = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "org.joshcs.quazar")?.appendingPathComponent(".celestia-light-arabica-9/data")
         
         guard let path = url?.path else {
             print("❌ Invalid path")
@@ -316,7 +316,7 @@ class ContentViewViewModel: ObservableObject {
     
     func deleteKeyStore() {
         let fileManager = FileManager.default
-        let url = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "org.joshcs.quasar")?.appendingPathComponent(".celestia-light-arabica-9/keys")
+        let url = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "org.joshcs.quazar")?.appendingPathComponent(".celestia-light-arabica-9/keys")
         
         guard let path = url?.path else {
             print("❌ Invalid path")
@@ -348,7 +348,7 @@ class ContentViewViewModel: ObservableObject {
     
     func deleteNodeStore() {
         let fileManager = FileManager.default
-        let url = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "org.joshcs.quasar")?.appendingPathComponent(".celestia-light-arabica-9")
+        let url = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "org.joshcs.quazar")?.appendingPathComponent(".celestia-light-arabica-9")
         
         guard let path = url?.path else {
             print("❌ Invalid path")
@@ -406,7 +406,7 @@ struct ContentView: View {
                     }.padding()
                 } else {
                     VStack {
-                        Text("👋 I'm quasar ✨ a macOS Celestia node client")
+                        Text("👋 I'm quazar ✨ a macOS Celestia node client")
                             .font(.largeTitle)
                             .padding()
                     }

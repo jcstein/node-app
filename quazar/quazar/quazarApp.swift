@@ -1,6 +1,6 @@
 //
-//  quasarApp.swift
-//  quasar
+//  quazarApp.swift
+//  quazar
 //
 //  Created by Josh Stein on 6/1/23.
 //
