@@ -20,6 +20,7 @@ class ContentViewViewModel: ObservableObject {
     @Published var catchupHeadProgress: Double = 0.0
     @Published var networkHeadHeightProgress: Double = 1.0
     @Published var accountAddress: String?
+    @Published var balance: Double = 0.0
     
     private var process: Process?
     private var timer: Timer?
@@ -383,11 +384,45 @@ class ContentViewViewModel: ObservableObject {
             }
         }
     }
+    
+    func checkBalance() {
+        let command = "cd \(Bundle.main.resourcePath!); ./celestia rpc state Balance --auth $(./celestia light auth admin --p2p.network arabica)"
+        
+        let task = Process()
+        task.launchPath = "/usr/bin/env"
+        task.arguments = ["bash", "-c", command]
+        
+        let pipe = Pipe()
+        task.standardOutput = pipe
+        task.standardError = pipe
+        
+        task.terminationHandler = { process in
+            let data = pipe.fileHandleForReading.readDataToEndOfFile()
+            if let output = String(data: data, encoding: .utf8)?.trimmingCharacters(in: .whitespacesAndNewlines) {
+                do {
+                    if let dict = try JSONSerialization.jsonObject(with: Data(output.utf8), options: .allowFragments) as? [String: Any],
+                        let result = dict["result"] as? [String: Any],
+                        let amountStr = result["amount"] as? String,
+                        let amountDouble = Double(amountStr) {
+                        DispatchQueue.main.async {
+                            self.balance = amountDouble * pow(10, -6)
+                        }
+                    }
+                } catch let error {
+                    print("Failed to parse JSON: \(error)")
+                }
+            }
+        }
+        
+        DispatchQueue.global().async {
+            task.launch()
+            task.waitUntilExit()
+        }
+    }
 }
 
 struct ContentView: View {
     @StateObject private var viewModel = ContentViewViewModel()
-    @State private var balance: Double = 0.0
     @State private var showAlert = false
     @State private var showMnemonicView = false
     
@@ -532,10 +567,7 @@ struct ContentView: View {
                                             .font(.title3)
                                             .padding(.bottom, 1)
                                         VStack {
-                                            Text("\(balance, specifier: "%.6f") TIA").padding(.bottom, 2)
-                                        }
-                                        Button(action: {checkBalance()}) {
-                                            Text("🪙 Check your balance").font(.headline)
+                                            Text("\(viewModel.balance, specifier: "%.6f") TIA").padding(.bottom, 2)
                                         }.disabled(!viewModel.isRunningNode)}
                                     GroupBox {
                                         if let accountAddress = viewModel.accountAddress {
@@ -728,42 +760,6 @@ struct ContentView: View {
             }
         }
     }
-    
-    func checkBalance() {
-        let command = "cd \(Bundle.main.resourcePath!); ./celestia rpc state Balance --auth $(./celestia light auth admin --p2p.network arabica)"
-        
-        let task = Process()
-        task.launchPath = "/usr/bin/env"
-        task.arguments = ["bash", "-c", command]
-        
-        let pipe = Pipe()
-        task.standardOutput = pipe
-        task.standardError = pipe
-        
-        task.terminationHandler = { process in
-            let data = pipe.fileHandleForReading.readDataToEndOfFile()
-            if let output = String(data: data, encoding: .utf8)?.trimmingCharacters(in: .whitespacesAndNewlines) {
-                do {
-                    if let dict = try JSONSerialization.jsonObject(with: Data(output.utf8), options: .allowFragments) as? [String: Any],
-                        let result = dict["result"] as? [String: Any],
-                        let amountStr = result["amount"] as? String,
-                        let amountDouble = Double(amountStr) {
-                        DispatchQueue.main.async {
-                            self.balance = amountDouble * pow(10, -6)
-                        }
-                    }
-                } catch let error {
-                    print("Failed to parse JSON: \(error)")
-                }
-            }
-        }
-        
-        DispatchQueue.global().async {
-            task.launch()
-            task.waitUntilExit()
-        }
-    }
-
 }
 
 struct ContentView_Previews: PreviewProvider {
