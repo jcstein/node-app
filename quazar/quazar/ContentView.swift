@@ -24,6 +24,7 @@ class ContentViewViewModel: ObservableObject {
     private var process: Process?
     private var timer: Timer?
     private var timer2: Timer?
+    private var timer3: Timer?
     private var processId: Int32?
     private var terminationAttempted = false
     
@@ -100,7 +101,7 @@ class ContentViewViewModel: ObservableObject {
     }
     
     func startNode() {
-        let command = "cd \(Bundle.main.resourcePath!); ./celestia light start --core.ip consensus-full-arabica-9.celestia-arabica.com --gateway.deprecated-endpoints --gateway --gateway.addr 127.0.0.1 --gateway.port 26659 --p2p.network arabica"
+        let command = "cd \(Bundle.main.resourcePath!); ./celestia light start --core.ip consensus-full-arabica-9.celestia-arabica.com --p2p.network arabica"
         
         let task = Process()
         task.launchPath = "/usr/bin/env"
@@ -129,8 +130,11 @@ class ContentViewViewModel: ObservableObject {
             self?.querySamplingStats()
         }
         
-        timer2 = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { [weak self] _ in
+        timer2 = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
             self?.queryAccountAddress()
+        }
+        timer3 = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
+            self?.checkBalance()
         }
     }
     
@@ -175,8 +179,10 @@ class ContentViewViewModel: ObservableObject {
                     self.isRunningNode = false
                     self.timer?.invalidate()
                     self.timer2?.invalidate()
+                    self.timer3?.invalidate()
                     self.timer = nil
                     self.timer2 = nil
+                    self.timer3 = nil
                 }
             }
         }
@@ -396,7 +402,7 @@ struct ContentView: View {
             VStack {
                 if viewModel.isRunningNode {
                     HStack {
-                        Text("🚀 Celestia light node is running")
+                        Text("🚀 Celestia Light Node is running")
                             .font(.largeTitle)
                             .padding(.trailing)
                         Spacer()
@@ -724,7 +730,7 @@ struct ContentView: View {
     }
     
     func checkBalance() {
-        let command = "curl -s -X GET http://localhost:26659/balance"
+        let command = "cd \(Bundle.main.resourcePath!); ./celestia rpc state Balance --auth $(./celestia light auth admin --p2p.network arabica)"
         
         let task = Process()
         task.launchPath = "/usr/bin/env"
@@ -736,10 +742,11 @@ struct ContentView: View {
         
         task.terminationHandler = { process in
             let data = pipe.fileHandleForReading.readDataToEndOfFile()
-            if let output = String(data: data, encoding: .utf8) {
+            if let output = String(data: data, encoding: .utf8)?.trimmingCharacters(in: .whitespacesAndNewlines) {
                 do {
-                    if let dict = try JSONSerialization.jsonObject(with: Data(output.utf8), options: []) as? [String: Any],
-                        let amountStr = dict["amount"] as? String,
+                    if let dict = try JSONSerialization.jsonObject(with: Data(output.utf8), options: .allowFragments) as? [String: Any],
+                        let result = dict["result"] as? [String: Any],
+                        let amountStr = result["amount"] as? String,
                         let amountDouble = Double(amountStr) {
                         DispatchQueue.main.async {
                             self.balance = amountDouble * pow(10, -6)
@@ -756,6 +763,7 @@ struct ContentView: View {
             task.waitUntilExit()
         }
     }
+
 }
 
 struct ContentView_Previews: PreviewProvider {
