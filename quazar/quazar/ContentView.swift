@@ -48,7 +48,7 @@ class ContentViewViewModel: ObservableObject {
     @Published var alertType: AlertType? = nil
     
     func initializeNode() {
-        let command = "cd \(Bundle.main.resourcePath!); ./celestia light init --p2p.network arabica"
+        let command = "cd \(Bundle.main.resourcePath!); ./celestia light init --p2p.network arabica "
         
         let task = Process()
         task.launchPath = "/usr/bin/env"
@@ -100,7 +100,7 @@ class ContentViewViewModel: ObservableObject {
         }
         return nil
     }
-    
+    // handle errors for timeout
     func startNode() {
         let command = "cd \(Bundle.main.resourcePath!); ./celestia light start --core.ip consensus-full-arabica-9.celestia-arabica.com --p2p.network arabica"
         
@@ -130,7 +130,7 @@ class ContentViewViewModel: ObservableObject {
         timer = Timer.scheduledTimer(withTimeInterval: 0.2, repeats: true) { [weak self] _ in
             self?.querySamplingStats()
         }
-        
+        // query this once after node starts
         timer2 = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
             self?.queryAccountAddress()
         }
@@ -253,7 +253,7 @@ class ContentViewViewModel: ObservableObject {
             task.waitUntilExit()
         }
     }
-    
+    // remove extra queries
     func queryAccountAddress() {
        let command = "cd \(Bundle.main.resourcePath!); ./celestia rpc state AccountAddress --auth $(./celestia light auth admin --p2p.network arabica)"
        
@@ -453,6 +453,7 @@ struct ContentView: View {
                     }
                 }
             }
+            // add X/Y blocks for sampled chain head and catchup head
             HStack {
                 if viewModel.isRunningNode {
                     GroupBox {
