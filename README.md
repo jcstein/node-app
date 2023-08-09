@@ -4,7 +4,7 @@ Introducing quasar ✨ [v0.2.0-alpha](https://github.com/jcstein/node-app/releas
 a [Celestia light node](https://docs.celestia.org/nodes/light-node/) macOS app, written in Swift.
 
 A quasar (quasi-stellar object) is a very luminous object in space,
-powered by an active galactic nucleus (a light node).
+powered by an active galactic nucleus (a light node)
 
 ## Features ⚙️
 
