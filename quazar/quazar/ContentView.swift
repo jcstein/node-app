@@ -102,7 +102,7 @@ class ContentViewViewModel: ObservableObject {
     }
     // handle errors for timeout
     func startNode() {
-        let command = "cd \(Bundle.main.resourcePath!); ./celestia light start --core.ip consensus-full-arabica-9.celestia-arabica.com --p2p.network arabica"
+        let command = "cd \(Bundle.main.resourcePath!); ./celestia light start --core.ip consensus-validator.celestia-arabica-10.com --p2p.network arabica"
         
         let task = Process()
         task.launchPath = "/usr/bin/env"
@@ -291,7 +291,7 @@ class ContentViewViewModel: ObservableObject {
 
     func deleteDataStore() {
         let fileManager = FileManager.default
-        let url = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "org.joshcs.quazar")?.appendingPathComponent(".celestia-light-arabica-9/data")
+        let url = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "org.joshcs.quazar")?.appendingPathComponent(".celestia-light-arabica-10/data")
         
         guard let path = url?.path else {
             print("❌ Invalid path")
@@ -323,7 +323,7 @@ class ContentViewViewModel: ObservableObject {
     
     func deleteKeyStore() {
         let fileManager = FileManager.default
-        let url = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "org.joshcs.quazar")?.appendingPathComponent(".celestia-light-arabica-9/keys")
+        let url = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "org.joshcs.quazar")?.appendingPathComponent(".celestia-light-arabica-10/keys")
         
         guard let path = url?.path else {
             print("❌ Invalid path")
@@ -355,7 +355,7 @@ class ContentViewViewModel: ObservableObject {
     
     func deleteNodeStore() {
         let fileManager = FileManager.default
-        let url = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "org.joshcs.quazar")?.appendingPathComponent(".celestia-light-arabica-9")
+        let url = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "org.joshcs.quazar")?.appendingPathComponent(".celestia-light-arabica-10")
         
         guard let path = url?.path else {
             print("❌ Invalid path")
@@ -605,7 +605,7 @@ struct ContentView: View {
                                         VStack {
                                             Text("🚰 Faucet").font(.title2).padding(.vertical, 3)
                                             Text("Visit the faucet to get funds")
-                                            Link("faucet-arabica-9.celestia-arabica.com", destination: URL(string: "https://faucet-arabica-9.celestia-arabica.com")!)
+                                            Link("faucet.celestia-arabica-10.com", destination: URL(string: "https://faucet.celestia-arabica-10.com")!)
                                         }
                                     }
                                     .padding(5)
@@ -615,7 +615,7 @@ struct ContentView: View {
                                         VStack {
                                             Text("🔎 Block explorer").font(.title2).padding(.vertical, 3)
                                             Text("Visit the explorer to surf the chain")
-                                            Link("explorer-arabica-9.celestia-arabica.com", destination: URL(string: "https://explorer-arabica-9.celestia-arabica.com")!)
+                                            Link("explorer.celestia-arabica-10.com", destination: URL(string: "https://explorer.celestia-arabica-10.com")!)
                                         }
                                     }
                                     .padding(5)
