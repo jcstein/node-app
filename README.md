@@ -1,6 +1,6 @@
-# quasar ✨ a Celestia light node macOS app
+# quazar ✨ a Celestia light node macOS app
 
-Introducing quasar ✨ [v0.2.0-alpha](https://github.com/jcstein/node-app/releases/tag/quasar_v0.3.0-alpha_CN-v0.11.0-rc10_Arabica),
+Introducing quazar ✨ [v0.3.0-alpha](https://github.com/jcstein/node-app/releases/tag/quazar_v0.3.0-alpha_CN-v0.11.0-rc10_Arabica),
 a [Celestia light node](https://docs.celestia.org/nodes/light-node/) macOS app, written in Swift.
 
 A quasar (quasi-stellar object) is a very luminous object in space,
@@ -8,7 +8,7 @@ powered by an active galactic nucleus (a light node).
 
 ## Features ⚙️
 
-v0.2.0-alpha of this app runs on the [Arabica devnet](https://docs.celestia.org/nodes/arabica-devnet/) (chain ID `arabica-10`) and has the following functions:
+v0.3.0-alpha of this app runs on the [Arabica devnet](https://docs.celestia.org/nodes/arabica-devnet/) (chain ID `arabica-10`) and has the following functions:
 
 * `🟣 Initialize your Celestia light node`: this initializes a Celestia light node in the application's local storage
 * `🟢 Start your node`: this starts the light node
@@ -31,12 +31,12 @@ v0.2.0-alpha of this app runs on the [Arabica devnet](https://docs.celestia.org/
 
 ### macOS download 💾
 
-The latest release with `quasar.dmg`
+The latest release with `quazar.dmg`
 images for Mac can be found on the
 [latest release](https://github.com/jcstein/node-app/releases/latest) page.
 
-Download `quasar.dmg` to your computer and open it from your downloads folder.
-Then, drag the "quasar" icon to the "Applications" folder.
+Download `quazar.dmg` to your computer and open it from your downloads folder.
+Then, drag the "quazar" icon to the "Applications" folder.
 
 <img width="912" alt="Screenshot 2023-06-07 at 1 03 06 AM" src="https://github.com/jcstein/node-app/assets/46639943/d5eee61f-bdbc-43da-85c0-b1b15b1af97b">
 
