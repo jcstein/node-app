@@ -46,7 +46,7 @@ function Main() {
         const newLogs = output.slice(celestiaLogsRef.current.length);
         setCelestiaLogs(prevLogs => [...prevLogs, ...newLogs]);
       }
-      await new Promise(resolve => setTimeout(resolve, 1000));  // Wait for 1 second
+      await new Promise(resolve => setTimeout(resolve, 500));  // Wait for 0.5 second
     }
   }, []);
   
