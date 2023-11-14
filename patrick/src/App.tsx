@@ -60,7 +60,7 @@ const App: React.FC<AppProps> = ({
             <button id="run-celestia" style={{ marginRight: '10px' }} onClick={celestiaVersion}>Check version</button>
             <button id="init-celestia" style={{ marginRight: '10px' }} onClick={celestiaInit}>Initialize light node</button>
             <button id="start-celestia" style={{ marginRight: '10px' }} onClick={celestiaStart}>Start light node</button>
-            <button id="clearLogs" onClick={clearLogs}>Clear Logs</button>
+            {celestiaLogs.length > 0 && <button id="clearLogs" onClick={clearLogs}>Clear Logs</button>}
           </div>
         </>
       )}
