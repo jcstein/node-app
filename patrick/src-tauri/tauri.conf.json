@@ -6,7 +6,7 @@
     "distDir": "../dist"
   },
   "package": {
-    "productName": "Patrick",
+    "productName": "Pat",
     "version": "0.0.0"
   },
   "tauri": {
@@ -36,7 +36,7 @@
       {
         "fullscreen": false,
         "resizable": true,
-        "title": "Patrick",
+        "title": "Pat",
         "width": 800,
         "height": 600
       }

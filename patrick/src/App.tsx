@@ -40,7 +40,7 @@ const App: React.FC<AppProps> = ({
 
   return (
     <div className="container">
-      <h1>{isRunning ? "Light node is running" : "Welcome to Patrick!"}</h1>
+      <h1>{isRunning ? "Light node is running" : "Welcome to Pat!"}</h1>
 
       {!isRunning && (
         <>
