@@ -26,12 +26,12 @@ function Main() {
   
   const celestiaVersion = useCallback(async () => {
     const output = await invoke("celestia_version");
-    setCelestiaLogs(prevLogs => [...prevLogs, `Celestia light node version: ${String(output)}\n`]);
+    setCelestiaLogs(prevLogs => [...prevLogs, `Celestia light node version: ${String(output)}`]);
   }, []);
 
   const celestiaInit = useCallback(async () => {
     const output = await invoke("celestia_init");
-    setCelestiaLogs(prevLogs => [...prevLogs, `Initialize Celestia light node: ${String(output)}\n`]);
+    setCelestiaLogs(prevLogs => [...prevLogs, `Initialize Celestia light node: ${String(output)}`]);
   }, []);
 
   const celestiaStart = useCallback(async () => {

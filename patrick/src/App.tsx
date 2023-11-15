@@ -38,9 +38,19 @@ const App: React.FC<AppProps> = ({
     setActiveTab(tabName);
   };
 
+  const handleCelestiaInit = () => {
+    setActiveTab('logs');
+    celestiaInit();
+  };
+
+  const handleCelestiaVersion = () => {
+    setActiveTab('logs');
+    celestiaVersion();
+  };  
+
   return (
-    <div className="container">
-      <h1>{isRunning ? "Light node is running" : "Welcome to Pat!"}</h1>
+    <div className="container" style={{ display: 'flex', flexDirection: 'column', height: '85vh' }}>
+      <h1>{isRunning ? "Celestia light node is running on Mainnet Beta" : "Welcome to Pat!"}</h1>
 
       {!isRunning && (
         <>
@@ -57,16 +67,16 @@ const App: React.FC<AppProps> = ({
           <p>Click on the Celestia logo to learn more</p>
 
           <div style={{ display: 'flex', justifyContent: 'center', paddingBottom: '20px' }}>
-            <button id="run-celestia" style={{ marginRight: '10px' }} onClick={celestiaVersion}>Check version</button>
-            <button id="init-celestia" style={{ marginRight: '10px' }} onClick={celestiaInit}>Initialize light node</button>
-            <button id="start-celestia" style={{ marginRight: '10px' }} onClick={celestiaStart}>Start light node</button>
+          <button id="run-celestia" style={{ marginRight: '10px' }} onClick={handleCelestiaVersion}>Check version</button>
+          <button id="init-celestia" style={{ marginRight: '10px' }} onClick={handleCelestiaInit}>Initialize light node</button>
+          <button id="start-celestia" style={{ marginRight: '10px' }} onClick={celestiaStart}>Start light node</button>
             {celestiaLogs.length > 0 && <button id="clearLogs" onClick={clearLogs}>Clear Logs</button>}
           </div>
         </>
       )}
 
       {isRunning && (
-        <div className="row">
+        <div className="row" style={{ paddingBottom: '10px' }}>
           {isRunning && (activeTab === 'logs' ? 
             <button id="stats-button" style={{ marginRight: '10px' }} onClick={() => handleTabClick('stats')}>Show Stats</button>
             :
@@ -76,11 +86,22 @@ const App: React.FC<AppProps> = ({
         </div>
       )}
 
-      <div id="logs" ref={logsContainerRef} style={{ width: '100%', height: '50vh', overflow: 'auto', whiteSpace: 'pre-wrap', overflowY: 'auto', resize: 'vertical', textAlign: 'left', display: activeTab === 'logs' ? 'block' : 'none' }}>
+      <div id="logs" ref={logsContainerRef} style={{ 
+        flex: '1 1 auto',
+        overflow: 'auto', 
+        whiteSpace: 'pre-wrap', 
+        textAlign: 'left', 
+        display: activeTab === 'logs' ? 'block' : 'none',
+        backgroundColor: '#000',
+        color: '#0F0',
+        fontFamily: 'Courier, monospace',
+        paddingLeft: '10px',
+        paddingRight: '10px',
+      }}>
         <pre id="celestia-logs">{celestiaLogs.join('\n')}</pre>
       </div>
     
-      <div id="stats" style={{ display: activeTab === 'stats' ? 'block' : 'none' }}>
+      <div id="stats" style={{ display: (activeTab === 'stats' && isRunning) ? 'block' : 'none' }}>
         <p>stats</p>
       </div>
     </div>
