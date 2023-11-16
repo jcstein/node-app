@@ -22,7 +22,7 @@ const App: React.FC<AppProps> = ({
   isRunning,
 }) => {
   const logsContainerRef = useRef<HTMLDivElement | null>(null);
-  const [activeTab, setActiveTab] = useState("logs"); // Add this line
+  const [activeTab, setActiveTab] = useState("logs");
 
   useEffect(() => {
     setTimeout(() => {
@@ -34,7 +34,6 @@ const App: React.FC<AppProps> = ({
   }, [celestiaLogs]);
 
   const handleTabClick = (tabName: string) => {
-    // Modify this function
     setActiveTab(tabName);
   };
 
@@ -50,21 +49,11 @@ const App: React.FC<AppProps> = ({
 
   return (
     <div className="container" style={{ display: 'flex', flexDirection: 'column', height: '85vh' }}>
-      <h1>{isRunning ? "Celestia light node running on Mainnet Beta ✨🤳" : "The fastest way to run a light node ✨"}</h1>
-
+      <h1>{isRunning ? "Celestia light node running on Mainnet Beta ✨🤳" : <div>The fastest way to run a Celestia light node ✨</div>}</h1>
+      <div style={{ display: 'flex', justifyContent: 'center', paddingBottom: '20px' }}>
+      </div>
       {!isRunning && (
         <>
-        <div className="row">
-            <a href="https://celestia.org" target="_blank" rel="noopener noreferrer">
-              <img
-                src={celestiaLogo}
-                className="logo celestia"
-                alt="Celestia logo"
-              />
-            </a>
-          </div>
-          <p>Click on the Celestia logo to learn more</p>
-
           <div style={{ display: 'flex', justifyContent: 'center', paddingBottom: '20px' }}>
           <button id="run-celestia" style={{ marginRight: '10px' }} onClick={handleCelestiaVersion}>Check version 🔢</button>
           <button id="init-celestia" style={{ marginRight: '10px' }} onClick={handleCelestiaInit}>Initialize light node 🧱</button>
@@ -75,7 +64,7 @@ const App: React.FC<AppProps> = ({
       )}
 
       {isRunning && (
-        <div className="row" style={{ paddingBottom: '10px' }}>
+        <div className="row" style={{ paddingBottom: '20px' }}>
           {isRunning && (activeTab === 'logs' ? 
             <button id="stats-button" style={{ marginRight: '10px' }} onClick={() => handleTabClick('stats')}>Show stats 🧪</button>
             :
@@ -90,7 +79,7 @@ const App: React.FC<AppProps> = ({
         overflow: 'auto', 
         whiteSpace: 'pre-wrap', 
         textAlign: 'left', 
-        display: activeTab === 'logs' ? 'block' : 'none',
+        display: activeTab === 'logs' && celestiaLogs.length > 0 ? 'block' : 'none',
         backgroundColor: '#000',
         color: '#0F0',
         fontFamily: 'Courier, monospace',
@@ -102,6 +91,10 @@ const App: React.FC<AppProps> = ({
     
       <div id="stats" style={{ display: (activeTab === 'stats' && isRunning) ? 'block' : 'none' }}>
         <p>stats 🫡</p>
+      </div>
+
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <img src={celestiaLogo} alt="Celestia logo" style={{ width: '69px', paddingTop: '10px' }} />
       </div>
     </div>
   );

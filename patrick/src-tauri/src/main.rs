@@ -25,7 +25,7 @@ fn kill_process_by_name(name: &str) -> Result<(), String> {
 
 #[tauri::command]
 fn celestia_version() -> String {
-  let output = Command::new("./celestia")
+  let output = Command::new("./bin/celestia")
     .arg("version")
     .output()
     .expect("failed to execute process");
@@ -35,7 +35,7 @@ fn celestia_version() -> String {
 
 #[tauri::command]
 fn celestia_init() -> Result<String, tauri::InvokeError> {
-  let output = Command::new("./celestia")
+  let output = Command::new("./bin/celestia")
     .arg("light")
     .arg("init")
     .output()
@@ -71,7 +71,7 @@ fn celestia_start() -> Result<String, tauri::InvokeError> {
 
   let mut child = Command::new("sh")
     .arg("-c")
-    .arg(format!("./celestia light start --core.ip rpc.celestia.pops.one 2>&1 | tee {}", output_file.to_str().unwrap()))
+    .arg(format!("./bin/celestia light start --core.ip rpc.celestia.pops.one 2>&1 | tee {}", output_file.to_str().unwrap()))
     .stdout(Stdio::piped())
     .spawn()
     .map_err(|e| tauri::InvokeError::from(e.to_string()))?;
