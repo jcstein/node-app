@@ -1,4 +1,8 @@
-# quazar ✨ a Celestia light node macOS app
+# pat - the fastest way to run a Celestia light node
+
+f.k.a. Quazar, f.k.a. Quasar
+
+## quazar ✨ a Celestia light node macOS app
 
 Introducing quazar ✨ [v0.3.0-alpha](https://github.com/jcstein/node-app/releases/tag/quazar_v0.3.0-alpha_CN-v0.11.0-rc10_Arabica),
 a [Celestia light node](https://docs.celestia.org/nodes/light-node/) macOS app, written in Swift.
