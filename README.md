@@ -1,6 +1,6 @@
 # pat - the fastest way to run a Celestia light node
 
-f.k.a. Quazar, f.k.a. Quasar
+Pat is f.k.a. Quazar, f.k.a. Quasar
 
 ## quazar ✨ a Celestia light node macOS app
 
