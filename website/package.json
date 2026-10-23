@@ -28,7 +28,7 @@
   "dependencies": {
     "@opennextjs/cloudflare": "^1.20.13",
     "cobe": "^0.6.3",
-    "katex": "^0.16.47",
+    "katex": "^0.19.1",
     "next": "15.5.28",
     "nextra": "^2.9.0",
     "nextra-theme-docs": "^2.9.0",
@@ -54,6 +54,14 @@
       "sharp",
       "unrs-resolver",
       "workerd"
-    ]
-  }
+    ],
+    "overrides": {
+      "katex@<0.18.2": "^0.19.1",
+      "glob@>=10.2.0 <10.5.0": "^10.5.0",
+      "postcss@<8.5.23": "^8.5.31",
+      "cross-spawn@<6.0.6": "^6.0.6",
+      "next-mdx-remote@<6.0.0": "^6.0.0"
+    }
+  },
+  "packageManager": "pnpm@10.34.8"
 }
